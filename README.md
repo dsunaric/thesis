@@ -1,4 +1,4 @@
-# How to model and optimize executional Process models - Bachelor thesis
+# How to Model and Optimize Executional Process Models - Bachelor thesis
 This project contains the Bachelor Thesis about 'How to model and optimize executional Process models' written by me (Dragana Sunaric) in 2022.
 
 
