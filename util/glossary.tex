@@ -1,0 +1,103 @@
+\newacronym{bpm}{BPM}{Business Process Management}
+\newacronym{bpmn}{BPMN}{Business Process Model and Notation}
+\newacronym{bpms}{BPMS}{\gls{bpmn-engine}}
+\newacronym{XML}{XML}{Extensible Markup Language \gls{xml}}
+\newacronym{XSD}{XSD}{XML Schema Definition \gls{xsd}}
+\newglossaryentry{bpmn-wokflow-management-system}
+{
+	name={BPMN Workflow Management System},
+	description={A software for executing workflows specified as \gls{bpmn} models}
+}
+\newglossaryentry{bpmn-engine}
+{
+	name={Business Process Workflow Management System},
+	description={see \gls{bpmn-wokflow-management-system}}
+}
+
+\newglossaryentry{executable-bpmn}
+{
+	name={executable \gls{bpmn} model},
+	description={A software for executing workflows specified as \gls{bpmn} models}
+}
+
+\newglossaryentry{happy-path}
+{
+	name={'happy-path'},
+	description={The best-case scenario in a process}
+}
+
+\newglossaryentry{conceptual-bpmn}
+{
+	name={conceptual \gls{bpmn} model},
+	description={A \gls{bpmn} model describing a business process that cannot be directly executed on a \gls{bpmn-engine}}
+}
+
+\newglossaryentry{business-oriented-bpmn}
+{
+	name={business-oriented process model},
+	description={See \gls{conceptual-bpmn}}
+}
+\newglossaryentry{automated-task}
+{
+	name={Automated task},
+	description={A task that can be automated in a \gls{bpmn-wokflow-management-system}}
+}
+
+\newglossaryentry{service-task}
+{
+	name={Service Task},
+	description={``Task that uses some sort of service, which could be a Web service or an automated application``\cite[p.~158]{bpmnstandard} }
+}
+\newglossaryentry{send-task}
+{
+	name={Send Task},
+	description={``designed to send a Message to an external Participant``[p.~159]\cite{bpmnstandard} }
+}
+\newglossaryentry{receive-task}
+{
+	name={Receive Task},
+	description={``designed to wait for a Message to arrive from an external Participant``[p.~161]\cite{bpmnstandard} }
+}
+\newglossaryentry{businessrule-task}
+{
+	name={Business Rule Task},
+	description={``provides a mechanism for the Process to provide input to a Business Rules Engine and to get the output of calculations that the Business Rules Engine might provide``[p.~163]\cite{bpmnstandard} }
+}
+\newglossaryentry{script-task}
+{
+	name={Script Task},
+	description={``executed by a business process engine. The modeler or implementer defines a script in a language that the engine can interpret``[p.~164]\cite{bpmnstandard} }
+}
+\newglossaryentry{manual-task}
+{
+	name={Manual Task},
+	description={``A Task that is expected to be performed without the aid of any business process execution engine``[p.~163]\cite{bpmnstandard} }
+}
+\newglossaryentry{user-task}
+{
+	name={User Task},
+	description={``A typical “workflow” Task where a human performer performs the Task with the assistance of a software application``[p.~163]\cite{bpmnstandard} }
+}
+\newglossaryentry{data-store}
+{
+	name={Data Store},
+	description={``A DataStore provides a mechanism for Activities to retrieve or update stored information that will persist beyond the
+		scope of the Process``[p.~208]\cite{bpmnstandard} }
+}
+
+\newglossaryentry{data-object}
+{
+	name={Data Object},
+	description={``Data Objects representing a Collection of Data``[p.~206]\cite{bpmnstandard} }
+}
+\newglossaryentry{xml}
+{
+	name={XML},
+	description={Extensible Markup Language - Defined by W3C\cite{bray1997extensibl} }
+}
+
+\newglossaryentry{xsd}
+{
+	name={XSD},
+	description={XML Schema Definition - Definition of the stucture of a XML File\cite{bray1997extensibl} }
+}
