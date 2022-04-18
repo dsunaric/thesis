@@ -2,17 +2,21 @@
 The following chapter will provide an overview of the current research on executable \gls{bpmn} models. First it will discuss the motivation behind process automation and using \gls{bpmn-wokflow-management-system}s and the benefit it might bring to an organization. Then it will state the differences between an \gls{conceptual-bpmn}, that cannot be deployed on an \gls{bpmn-engine}, and an \gls{executable-bpmn}. Finally this chapter will list the steps necessary to turn an \gls{conceptual-bpmn} executable.
 
 \section{Why automate Processes?}
-While process automation seems to be in itself a pursued goal, there are some quantifiable advantages of using a \gls{bpmn-wokflow-management-system} besides the possibility to automate certain process steps.
+While process automation seems to be in itself a pursued goal, there are some quantifiable advantages of using a \gls{bpms} besides the possibility to automate certain process steps.
 \begin{itemize}
 	\item \textbf{Shorten process lifetimes}: Managing processes manually requires handling tasks such as starting sub processes or handling handovers from one entity to another manually and can lead to unnecessary waiting periods between two operation tasks in the process. By implementing an Workflow Management System resource allocation and parallelization can be automated where possible to assure optimal use of process resources. \cite{gadatsch2020grundkurs}
+	
 	\item \textbf{Reduction in process cost}: By reducing process lifetimes and increase productivity due to better handling resources can reduce process costs \cite{gadatsch2020grundkurs} but due to the high price for \gls{bpmn-engine}s the overall cost does not have to decrease necessarily \cite{gruber2009profitability}.
+	
 	\item \textbf{Workload reduction}: As stated earlier, managing processes needs to be done either by an \gls{bpmn-engine} or manually which creates additional workload for an organization. Workloads for employees executing the processes are also kept steady due to dynamic resource assignment. \cite{fundamentals}\cite{gadatsch2020grundkurs}
+	
 	\item \textbf{Enforce rules}: Defining the processes that is then directly executed and controlled by an \gls{bpmn-engine} enables the organization to enforce the execution of the process at it is designed. Following Rules and Protocols can partially be automated and enforcing guidelines and laws in an organization becomes easier. \cite{fundamentals}
+	
 	\item \textbf{Create Transparency}: Using an \gls{bpmn-engine} provides insights to the actually processes that are executed in the organization. It makes it easier to determine the performance of the processes by providing historical information of completed process instances and provides insight of the current status of processes that are still in progress. \cite{gadatsch2020grundkurs}
 \end{itemize}
 
 \section{Executable vs Conceptual Process Models}
-\todo{write this section}
+Process Models are inherently Business-oriented as their purpose is initially to define and visualize the processes happening in an organization. Business-oriented or  \gls{conceptual-bpmn} are meant to be read by domain experts and contain usually implicit information known to these domain experts \cite{fundamentals}. They are usually incomplete, meaning that not every possible outcome of a process is modeled. In fact, usually only the best-case scenario, also known as the \gls{happy-path}, of a process is modeled in an \gls{conceptual-bpmn} \cite{freund2019real}. \\~\\Because of this, business-oriented models cannot be executed in an \gls{bpmn-engine} as they are but have to be turned into an \gls{executable-bpmn}. \gls{executable-bpmn} are meant for IT-experts and should be a technical representation of the business process while still begin understandable by domain experts. They should leave no room for interpretation as they have to contain all the information necessary for the process to be executed using an \gls{bpmn-engine}. Besides the visual information, \gls{executable-bpmn} also need to contain execution properties like interface definitions and Variables that are used by the Process called \gls{process-variables}.\cite{fundamentals} \\~\\An algorithm on how to efficiently turn an \gls{conceptual-bpmn} executable as stated in the book \textit{Fundamentals of Business Process Management} \cite{fundamentals} is described in the next section. 
 
 \section{Making Process Models executable}
 As stated earlier, \gls{bpmn} models can not directly be executed by a \gls{bpms} but have to be converted from an \gls{conceptual-bpmn} into an \gls{executable-bpmn}. 
@@ -99,7 +103,7 @@ As mentioned earlier \gls{manual-task}s are not automated and do also happen wit
 	\item \textbf{Turn it into a User task}: If the task cannot be automated or the organization lacks the resources to automate the task yet, it might be possible to turn the \gls{manual-task} into a \gls{user-task}. One possibility could be to dedicate a person in charge of the manual task to notify the \gls{bpmn-wokflow-management-system} on the completion of the task via a worklist handler. \cite{stefanov2014business}
 \end{itemize}
 
-In the case that neither an \gls{automated-task} nor an \gls{user-task} is suitable for modelling the \gls{manual-task} one might also consider isolating the task and modelling the rest of the process. If this is also not possible due to the manual task being crucial for the expressiveness of the model it might be reconsidered if this process can or should be executed using a \gls{bpmn-engine}\cite[p.~228]{praxishandbuch}
+In the case that neither an \gls{automated-task} nor an \gls{user-task} is suitable for modelling the \gls{manual-task} one might also consider isolating the task and modelling the rest of the process. If this is also not possible due to the manual task being crucial for the expressiveness of the model it might be reconsidered if this process can or should be executed using a \gls{bpmn-engine}\cite[p.~228]{freund2019real}
 
 \subsection{Complete the process model}
 Usually \gls{conceptual-bpmn}s are not complete and leave out certain informations that are seen as implicit knowledge or as not important by the person modelling the process but might be crucial if a complete picture of the process is needed for automation. 
@@ -138,7 +142,7 @@ However there are some exception to this rule:
  \end{itemize}
 
 \subsection{Specify execution properties}
-The final step in turning an \gls{conceptual-bpmn} executable is to specify the details of the implementation details of our \gls{bpmn} model. While the changes performed up to this step had an impact of the graphical representation, the execution properties are not graphically embedded into \gls{bpmn} but are encoded into the \gls{xml} representation of the BPMN-model. \cite{fundamentals} A schematic representation of the structure if \gls{bpmn} is provided in \ref{fig:bpmn-schema}. For the full specification of the BPMN-XML the \gls{xml}-schema can be found on the OMG-Website\cite{BPMN-xml-spec}. 
+The final step in turning an \gls{conceptual-bpmn} executable is to specify the details of the implementation details of our \gls{bpmn} model. While the changes performed up to this step had an impact of the graphical representation, the execution properties are not graphically embedded into \gls{bpmn} but are encoded into the \gls{XML} representation of the BPMN-model. \cite{fundamentals} A schematic representation of the structure if \gls{bpmn} is provided in \ref{fig:bpmn-schema}. For the full specification of the BPMN-XML the \gls{xml}-schema can be found on the OMG-Website\cite{BPMN-xml-spec}. 
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=0.3\columnwidth]{graphics/bpmn-schema}
@@ -148,7 +152,7 @@ The final step in turning an \gls{conceptual-bpmn} executable is to specify the 
 
 
 \paragraph{Process Variables}~\\
-In order to use data in different elements of our process, we need process variables that can be read, created and modified during the processes execution. Every Process variable has a \textbf{data type} that can either be simple (strings, integers, doubles, booleans, dates, times, ...) or complex (composed of other types). A complex Type needs to be described as an \gls{xsd}-Schema File.\\
+In order to use data in different elements of our process, we need process variables that can be read, created and modified during the processes execution. Every Process variable has a \textbf{data type} that can either be simple (strings, integers, doubles, booleans, dates, times, ...) or complex (composed of other types). A complex Type needs to be described as an \gls{XSD}-Schema File.\\
 \lstset{language=XML}
 	\begin{lstlisting}[caption={The \gls{xml}-Schema Definiton for a complex type 'person'},captionpos=b]
 <xs:element name="person">
