@@ -17,6 +17,7 @@
 .*.lb
 
 intro.tex
+example.pdf
 
 ## Intermediate documents:
 *.dvi
