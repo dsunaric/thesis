@@ -1,22 +1,19 @@
-
-\todo{write Introduction}
-
 \gls{bpmn} is an widely used and established diagramming language with the purpose of documenting and visualizing business processes in organizations. Process models are usually created by process analysts together with domain experts. \gls{bpmn}-models created that way contain incomplete and implicit information for the specific business domain and are therefore called \gls{conceptual-bpmn}. By involving IT-experts these \gls{conceptual-bpmn}s can be made executable and automated using a \gls{bpmn-engine}. \cite{fundamentals}
 
 Today \gls{bpmn-engine}s like \gls{camunda}  and \gls{alfresco} are widely used by big organizations \cite{camunda-customers} \cite{activiti-customers}. Real-life Processes being executed in \gls{bpmn-wokflow-management-system}s are inherently complex and have to be changed and reevaluated together with the Software embedded in these processes as requirements and guidelines for the specific domain change. 
 
-One advantage of directly automating processes described as \gls{bpmn} is its readability for IT-experts and domain-experts. As a consequence both parties have a common understanding of the process that is executed and have basis for discussion when changes have to be made. In order for the cooperation between IT and Business to work smoothly, \gls{executable-bpmn} should be as simple to understand as possible and be in line with known standards and best-practices. 
+One advantage of directly automating processes described as \gls{bpmn} is its readability for IT-experts and domain-experts. As a consequence both parties have a common understanding of the process that is executed and have basis for discussion when changes have to be made. In order for the cooperation between IT and Business to work smoothly, \gls{executable-bpmn} should be as simple to understand as possible and be in line with known standards and best practices. 
 
-Applying guidelines for good \gls{executable-bpmn} does not only increase readability but can also have direct impact on the process cost. Due to the pricing scheme of some enterprise \gls{bpmn-engine}s, which take into account the total number of nodes passed by process instances, reducing non necessary handovers and therefore reducing the number of nodes in the model can have an impact on the pricing model and license needed. 
+Applying guidelines for good \gls{executable-bpmn} does not only increase readability but can also have direct impact on process costs. Due to the pricing scheme of some enterprise \gls{bpmn-engine}s, which take into account the total number of nodes passed by process instances, eliminating non necessary handovers and therefore reducing the number of nodes in the \gls{bpmn} model can have an impact on the license needed. 
 
-\section{Goal}
-The Goal of this Thesis is to state the current research and best-practices for creating  \gls{executable-bpmn}s. Furthermore this work will take a look at methods for transforming and improving existing \gls{executable-bpmn}s and how to use them to create models in line with the states best-practices. Finally this thesis will provide information about how to use these methods in practice. 
+\section{Goal of This Thesis}
+The Goal of this Thesis is to give practical guidance on how to apply best practices and methodologies to create good \gls{executable-bpmn} and to improve existing models. 
 
-\section{Structure of this thesis}
+This will be achieved by stating the current research on creating  \gls{executable-bpmn}s. After that this work will take a look at methods for transforming and improving existing \gls{executable-bpmn}s and how to use them to create models in line with the stated best practices. Finally this thesis will provide detailed information about how to use these methods in practice. 
+
+\section{Structure of This Thesis}
 This Thesis will start with an state-of-the-art section consisting of two chapters. The first one will be about the nature of \gls{executable-bpmn}s and how to make an existing \gls{conceptual-bpmn} executable by an \gls{bpmn-wokflow-management-system}. The second chapter will provide methods for analyzing and improving processes focusing on Six Sigma approaches.
 
-Along with this thesis a software was developed which suggest changes to an \gls{executable-bpmn} given as an \gls{XML}-file based on the best-practices found in the first two chapters. The documentation and implementation details on this software can be found in chapter 3. 
+Along with this thesis a software was developed which suggest changes to an \gls{executable-bpmn} given as an \gls{XML}-file based on the best practices found in the first two chapters. The documentation and implementation details on this software can be found in chapter 3. 
 
-Not every aspect of transformation given in the first two chapters will be fully automated and requires knowledge on the specific domain of the process. Therfore, the last chapter will provide a case-study to an existing process model applying the principles from the first two chapters and giving a guide on how to use those principles in practice.
-
-%\section{Evaluation approach}
+Not every aspect of transformation given in the first two chapters will be suitable to be fully automated and requires knowledge on the specific domain of the process. Therefore, the last chapter will provide a case-study to an existing process model applying the principles from the first two chapters and giving a guide on how to use those principles in practice.
