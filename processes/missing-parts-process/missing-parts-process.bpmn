@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" camunda:diagramRelationId="d627558f-b95a-4a9b-808e-3eca4a96cb1d">
   <bpmn:collaboration id="Collaboration_12vct0t">
-    <bpmn:participant id="Participant_0b573qb" name="Missing part process" processRef="Process_cd9923e4-1a30-4c5d-9cce-cfd113023ae0"/>
+    <bpmn:participant id="Participant_0b573qb" name="Missing Parts Process" processRef="Process_cd9923e4-1a30-4c5d-9cce-cfd113023ae0"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_cd9923e4-1a30-4c5d-9cce-cfd113023ae0" isExecutable="true">
     <bpmn:laneSet id="LaneSet_049xisw">
@@ -41,7 +41,7 @@
       <bpmn:incoming>Flow_0vqyznt</bpmn:incoming>
       <bpmn:outgoing>Flow_001webb</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_0e36w6z" name="get client e-mail">
+    <bpmn:task id="Activity_0e36w6z" name="recieve client&#10;e-mail">
       <bpmn:incoming>Flow_001webb</bpmn:incoming>
       <bpmn:outgoing>Flow_0elgeox</bpmn:outgoing>
     </bpmn:task>
