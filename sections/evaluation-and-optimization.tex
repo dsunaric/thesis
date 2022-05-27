@@ -146,28 +146,46 @@ Generally, the cycle time $R_P$ of a process $P$ with one or more alternative bl
 According to the BPMN-Standard\cite{bpmnstandard} defined by OMG, there are multiple ways to indicate that a task or sequence is executed more than once: 
 
 \begin{itemize}
+	
+	\item \textbf{Multiple Instances}: Three lines in the bottom of the task indicate that a task is executed multiple times - once for every instance or element. There are two kinds of muli-instance tasks, sequential, meaning the instances are processes one after another and parallel, meaning the instances are processed at the same time. 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\columnwidth]{graphics/multi-instance-tasks}
+		\caption{Multiple Instance Tasks} 
+		\label{fig:muliti-instance-tasks} 
+	\end{figure}
+	The execution time of these tasks can be estimated using the same calculations as described above with parallel and sequential tasks.
+	
+	Having a Process $P$ consisting of only one multi-instance task with the runtimes $B_1,B_2 ... B_n$ for each instance, the total runtime $R_P$ of process $P$ ca be calculated using the formula \ref{eq:sum-par} when the instances are executed parallel and \ref{eq:sum-seq} when the instances are executed sequential. 
+
 	\item \textbf{Activity Looping}: A loop in the bottom center of the activity indicates, that this task si performed more than once. The definition on when this task repeats is specified in the \textit{loopCharacteristics}-XML Element.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\columnwidth]{graphics/activity-looping}
+		\includegraphics[width=0.2\columnwidth]{graphics/looped-task}
 		\caption{A Task with Activity Looping} 
 		\label{fig:activity-looping} 
 	\end{figure}
 	\item \textbf{Sequence Flow Looping}: Whenever a whole sequence flow instead of a task needs to be repeated, a \textit{Sequence Flow Looping}-pattern can be used where the looping condition is defined within a exclusive gateway. The default flow points back to the start of the repeating sequence flow. 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\columnwidth]{graphics/sequence-flow-looping}
+		\includegraphics[width=0.9\columnwidth]{graphics/sequence-flow-looping}
 		\caption{The Sequence Flow Looping Pattern} 
 		\label{fig:sequence-flow-looping} 
 	\end{figure}
-	\item \textbf{Multiple Instances}: Three lines in the bottom of the task indicate that a task is executed multiple times - once for every instance or element. There are two kinds of muli-instance tasks, sequential, meaning the instances are processes one after another and parallel, meaning the instances are processed at the same time. 
+
+	The execution time of both \textbf{Sequence Flow Looping} sequences and \textbf{Activity Looping} tasks are dependent on the probability that these sequences are repeated. Looking at the two equivalent processes in \ref{fig:repeated-example} the probability of Task A repeating is 20\% for each loop taken. Task A is always executed at least once. The probability for Task A being executed twice is $20\% = 0.2$. The probability of Task A being executed three times is $0.2 * 0.2 = 0.04$. Following this pattern, the execution time can be estimated with the infinite sum $
+	\displaystyle\sum_{i=1}^{\infty} 0.2^i * 10s$
+	
+
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.5\columnwidth]{graphics/muliti-instance-tasks}
-		\caption{Mulitple Instance Tasks} 
-		\label{fig:muliti-instance-tasks} 
+		\includegraphics[width=0.9\columnwidth]{graphics/repeated-example}
+		\caption{a process with sequence flow looping (left) and the equivalent using activity looping (right)} 
+		\label{fig:repeated-example} 
 	\end{figure}
 \end{itemize}
+
+The exe
 
 
 % Cycle time using flow analysis
