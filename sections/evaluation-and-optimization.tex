@@ -18,10 +18,7 @@ Applied in the context of (executable) business processes, Six Sigma provides a 
 In the following, a few selected Six Sigma methods are described that apply the \textbf{DMAIC} and  \textbf{DMADV} approach, these being:  
 \begin{itemize}
 	\item SIPOC Analysis
-	\item Check Sheets
-	\item Cause and Effect Diagram
-	\item Root Cause Analysis
-	\item Quality Function Deployment (QFD)
+	\item Value Added Analysis
 \end{itemize}
 
 To demonstrate a few of the following methodologies, the exemplary \textit{Missing Part Process} will be used. The fictional process demonstrates what happens when a customer of a furniture shop reports a missing part in his/her order and requests a new part to be shipped. The corresponding \gls{bpmn}-model is shown in Figure \ref{fig:missing-part-process}
@@ -46,26 +43,104 @@ The outcome of a SIPOC analysis is a table, containing the following information
 \end{itemize}
 
 When this method is applied to the \textbf{Missing Part Process} the resulting SIPOC table looks like this: 
-%TODO Process
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[H]
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{p{3cm}p{5cm}p{4cm}p{5cm}p{3cm}}
+			\hline
+			Supplier &
+			Input &
+			Process &
+			Output &
+			Customer \\ \hline
+			customer &
+			The specification for the missing part, unique order number &
+			send e-mail to furniture store &
+			e-mail containing:  The specification for the missing part, unique order number &
+			first-level support \\ \hline
+			customer &
+			The specification for the missing part, unique order number &
+			recieve client e-mail &
+			knowledge about the missing part &
+			first-level support \\ \hline
+			first-level support &
+			The specification for the missing part &
+			save request \& contact warehouse &
+			database entry for missing part &
+			warehouse administration \\ \hline
+			warehouse administration &
+			The specification for the missing part &
+			evaluate if missing part is available &
+			if the missing part is available or not &
+			warehouse administration \\ \hline
+			warehouse administration &
+			The specification for the missing part &
+			send order to logistics &
+			filled in order for missing part &
+			logistics \\ \hline
+			logistics &
+			The specification for the missing part &
+			order missing part &
+			confirmation for order &
+			warehouse administration \\ \hline
+			warehouse administration &
+			customer address, packaged missing part &
+			ship product to customer &
+			packaged product &
+			warehouse administration \\ \hline
+			warehouse administration &
+			expected shipping date, unique order number &
+			notify first-level support about shipping &
+			e-mail containing: expected shipping date, unique order number &
+			first-level support \\ \hline
+			first-level support &
+			expected shipping date, unique order number &
+			notify customer &
+			e-mail containing: expected shipping date, unique order number &
+			customer \\ \hline
+		\end{tabular}%
+	}
+\end{table}
 
 
-\subsection{Check Sheets}
-
-\subsection{Pareto Analysis}
-
-\subsection{Cause and Effect Diagram}
-
-\subsection{Root Cause Analysis}
-
-\subsection{Quality Function Deployment (QFD)}
-
-\section{Other Qualitative Measures}
+While the SIPOC analysis is no tool for optimizing a process itself, it is necessary in order to have an overview of all activities in a process for other Six Sigma techniques. 
 
 \subsection{Value Added Analysis (VAA)}
 
+The aim of value-Added analysis is to determine the value of each activity in a process and find possible steps in a process that can be eliminated \cite{fundamentals}\cite{harrington2016value}. When performing value-added analysis every step in a process is classified by the kind of value it adds \cite{harrington2016value}: 
+
+\begin{itemize}
+	\item \textbf{RVA (Real value-added)}: Steps that contribute to the output the external customer is expecting are viewed as \textit{real value adding}. 
+	\item \textbf{BVA (Business value-added)}: Some steps in processes are not performed with the customer in mind but are needed to  keep the company running. These are classified as \textit{business value adding}.
+	\item \textbf{NVA (No value-added)}: Steps that neither contribute to external customer requirements nor keep the business running are considered as \textit{non value adding}. There are two kinds of such steps, activities that are necessary because of bad process design (e.g. reworking, waiting, moving,...) and activities of bureaucratic nature (e.g. reporting, logging, ...).
+\end{itemize}
+
+To make this more practical, H. James Harrington provided a flowchart \ref{fig:VAA-flow} with which every activity can be classified in one of those three categories\cite{harrington2016value}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\columnwidth]{graphics/VAA}
+	\caption{The value added analysis flowchart adapted from \cite{harrington2016value}} 
+	\label{fig:VAA-flow} 
+\end{figure}
+
+In figure \ref{fig:VAA-missing-parts} the tasks in the missing parts process (figure \ref{fig:missing-part-process}) are colored according to their category after applying the flowchart in figure \ref{fig:VAA-flow}. Green tasks are real value adding activities, yellow tasks business value adding activities and red tasks are no value adding activities. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\columnwidth]{graphics/missing-parts-process-vaa}
+	\caption{missing parts process (figure \ref{fig:missing-part-process}) with tasks colored based on their value} 
+	\label{fig:VAA-missing-parts} 
+\end{figure}
+
+After this categorization is done, one can start with waste elminination, emaning eliminating unnecesarry steps in the process. The obvious goal is to eliminate NVA steps. This an be done by automation. In the context of the missing parts process (figure \ref{fig:missing-part-process}) this could mean automating the customer notification after the ordered product enters the warehouse. Another approach for waste elimination is minimizing handovers. For example could the missing parts process be changed in a way, that the warehouse administration directly triggers the product ordering instead of sending the order to the logistics department. Apart from eliminating NVA steps, this is also the opportunity to evaluate BVA steps. If the BVA steps do not align actual business goals or do not bring enough value to the business goal they are applied for, they can be eliminated or simplified. \cite{fundamentals}\cite{harrington2016value}
 
 \section{Quantitative Analysis}
-The issue with qualitative methods for process improvement is the inability to quantify the impact of theyr application. In order to measure and justify changes in the status quo process we need quantitative methods for analyzing processes. In the context of \gls{bpm}, assessable measures about three different dimensions of a process can be investigated : The process as a whole, resources involved in the process and individual Tasks in a process. \cite{fundamentals}
+The issue with qualitative methods for process improvement is the inability to quantify the impact of their application. In order to measure and justify changes in the status quo process we need quantitative methods for analyzing processes. In the context of \gls{bpm}, assessable measures about three different dimensions of a process can be investigated : The process as a whole, resources involved in the process and individual Tasks in a process. \cite{fundamentals}
 
 Before discussing methods for measuring process performance, it is necessary to define what is measured. The four key performance measures examined in this chapter are: cost, time, quality and flexibility. \cite{fundamentals}
 
@@ -173,8 +248,7 @@ According to the BPMN-Standard\cite{bpmnstandard} defined by OMG, there are mult
 		\label{fig:sequence-flow-looping} 
 	\end{figure}
 
-	The execution time of both \textbf{Sequence Flow Looping} sequences and \textbf{Activity Looping} tasks are dependent on the probability that these sequences are repeated. Looking at the two equivalent processes in \ref{fig:repeated-example} the probability of Task A repeating is 20\% for each loop taken. Task A is always executed at least once. The probability for Task A being executed twice is $20\% = 0.2$. The probability of Task A being executed three times is $0.2 * 0.2 = 0.04$. Following this pattern, the execution time can be estimated with the infinite sum $
-	\displaystyle\sum_{i=1}^{\infty} 0.2^i * 10s$
+	The execution time of both \textbf{Sequence Flow Looping} sequences and \textbf{Activity Looping} tasks are dependent on the probability that these sequences are repeated. Looking at the two equivalent processes in \ref{fig:repeated-example} the probability of Task A repeating is 20\% for each loop taken. Task A is always executed at least once. The probability for Task A being executed twice is $20\% = 0.2$. The probability of Task A being executed three times is $0.2 * 0.2 = 0.04$. Following this pattern, the execution time can be estimated with the infinite sum $\displaystyle\sum_{i=1}^{\infty} 0.2^i * 10s$.
 	
 
 	\begin{figure}[H]
@@ -183,10 +257,13 @@ According to the BPMN-Standard\cite{bpmnstandard} defined by OMG, there are mult
 		\caption{a process with sequence flow looping (left) and the equivalent using activity looping (right)} 
 		\label{fig:repeated-example} 
 	\end{figure}
+
+	Generally a the total execution time  $R_P$ of a repeated sequence where the inner part has a execution time of $R_{Repeated}$ and a probability of $p, 0 < p < 1$  to be repeated in each loop can be calculated using the formula int \ref{eq:rep-runtime}
+	
+	\begin{equation}\label{eq:rep-runtime}
+		R_P = \displaystyle\sum_{i=1}^{\infty} p^i * R_{Repeated}
+	\end{equation}
 \end{itemize}
-
-The exe
-
 
 % Cycle time using flow analysis
 %	additive when sequential
@@ -201,22 +278,36 @@ The exe
 
 
 
-\subsection{Queues}
+\paragraph{Queues}
 %see https://link.springer.com/content/pdf/10.1007/11837862.pdf:
 %An Approximate Analysis of Expected Cycle Time in Business Process Execution
 As mentioned before, the \gls{cycle-time} of a process consists of the time the process is actively executed (\textit{processing time}) and the time the process spends waiting (\textit{waiting time}). In the previous section basic flow analysis was introduced to approximate and analyze these measures.  
 While the processing time can be approximated using basic flow analysis, getting an idea about the total expected waiting time of a process is more complex, since flow analysis as it is has no tool to estimate queuing time. 
 
-In order to bridge this gap, the flow analysis can be extended using an queuing approximation algorithm as it is described in this paper\cite{ha2006approximate}.
+In order to bridge this gap, the flow analysis can be extended using an queuing approximation algorithm \cite{ha2006approximate}.
 
 % TOOD describe flow analysis with queuing analysis
 
 \subsection{Simulation}
+% TODO (or not todo)
 
+\subsection{Cycle Time Efficiency \& Littles Law}
+% cite : little2008little
+As mentioned before, the \gls{cycle-time} (CT) of a process consists of the time the process is actively executed (\textit{processing time}) and the time the process spends waiting (\textit{waiting time}). Besides looking at overall cycle time, it might also be useful to analyze the processing time relative to the cycle time. This measure is called \textit{cycle time efficiency}. In this context, the \textit{processing time} is often also called \textit{theoretical cycle time (TCT)}. The \textit{cycle time efficiency} (CTE) can be calculated using the formula \ref{eq:cte}.\cite{fundamentals}
 
-\subsection{Cycle Time Efficiency}
-\subsection{Littles Law}
-\section{Benchmarking Processes}
+\begin{equation}\label{eq:cte}
+	CTE = \dfrac{TCT}{CT}
+\end{equation}
 
+The theoretical cycle (TCT) time can be calculated by applying flow analysis. For determining the cycle time (CT) two other measures are needed. 
 
-%H. Harrington - Business Process Improvement chapter 9 
+The first one is the \textit{arrival rate ($\lambda$)} that denotes the average number of process instances that start the process in a given period. The second measure needed is the \textit{work-in-process (WIP)} which is the average number of active process instances at any given time. If the WIP is stable, meaning it does not increase infinitely, the Process itself is called stable. Those three measures, the arrival rate $\lambda$, the WIP and the cycle time (CT) are related through \textit{Littles Law} which is described in formula \ref{eq:littles-law}.\cite{little2008little}
+
+\begin{equation}\label{eq:littles-law}
+	WIP = \lambda * CT
+\end{equation}
+
+Usually, the actual cycle time of a process is harder to determine than the WIP or the arrival time, therefore one can transform \textit{Littles Law} to determine the cycle time using the other two measures (see formula \ref{eq:littles-law-transf}).
+\begin{equation}\label{eq:littles-law-transf}
+	CT = \dfrac{WIP}{\lambda}
+\end{equation}
