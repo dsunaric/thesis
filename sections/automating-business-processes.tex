@@ -30,7 +30,7 @@ There are different approaches how an \gls{executable-bpmn} can be derived from 
 	\item Specify execution properties
 \end{enumerate}
 
-\subsection{Identify the automation boundaries}
+\subsection{Identify the automation boundaries}\label{automation}
 The first step in turning an \gls{conceptual-bpmn} in an  \gls{executable-bpmn} is to identify which steps can be automated using a \gls{bpmn-wokflow-management-system}. 
 
 Tasks which can inherently be automated are called \gls{automated-task}s \cite[p.~317]{fundamentals}. Taking a look at the BPMN 2.0 standard an \gls{automated-task} can be one of the following Task types:
@@ -105,7 +105,7 @@ As mentioned earlier \gls{manual-task}s are not automated and do also happen wit
 
 In the case that neither an \gls{automated-task} nor an \gls{user-task} is suitable for modelling the \gls{manual-task} one might also consider isolating the task and modelling the rest of the process. If this is also not possible due to the manual task being crucial for the expressiveness of the model it might be reconsidered if this process can or should be executed using a \gls{bpmn-wokflow-management-system}\cite[p.~228]{freund2019real}
 
-\subsection{Complete the process model}
+\subsection{Complete the process model}\label{complete}
 Usually \gls{conceptual-bpmn}s are not complete and leave out certain informations that are seen as implicit knowledge or as not important by the person modelling the process but might be crucial if a complete picture of the process is needed for automation. 
 
 A common flaw in many conceptual models is ignoring errors and only implementing the 'happy path'. The \gls{happy-path} is the best-case scenario that can happen in the execution of a process. While it might be sufficient for a \gls{conceptual-bpmn}, showing the process for a customer order, to not show what happens in case the product is out of stock or what happens if the payment does not work, a \gls{executable-bpmn} has to take into account what happens in case an error occurs. 
