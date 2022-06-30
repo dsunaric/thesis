@@ -1,22 +1,22 @@
 
-The following chapter will provide an overview of the current research on executable \gls{bpmn} models. First it will discuss the motivation behind process automation and using \gls{bpmn-wokflow-management-system}s and the benefit it might bring to an organization. Then it will state the differences between an \gls{conceptual-bpmn}, that cannot be deployed on an \gls{bpmn-engine}, and an \gls{executable-bpmn}. Finally this chapter will list the steps necessary to turn an \gls{conceptual-bpmn} executable.
+The following chapter will provide an overview of the current research on executable \gls{bpmn} models. First it will discuss the motivation behind process automation and using \gls{wfms}s and the benefit it might bring to an organization. Then it will state the differences between an \gls{conceptual-bpmn}, that cannot be deployed on an \gls{wfms}, and an \gls{executable-bpmn}. Finally this chapter will list the steps necessary to turn an \gls{conceptual-bpmn} executable.
 
 \section{Why automate Processes?}
-While process automation seems to be in itself a pursued goal, there are some quantifiable advantages of using a \gls{bpms} besides the possibility to automate certain process steps.
+Introducing an \gls{wfms} in an organization is often done in order to open the possibilities to automating parts of a process or even the whole process. While process automation is an perused goal, there are some quantifiable advantages to using a \gls{wfms} besides the possibility to automate certain process steps.
 \begin{itemize}
-	\item \textbf{Shorten process lifetimes}: Managing processes manually requires handling tasks such as starting sub processes or handling handovers from one entity to another manually and can lead to unnecessary waiting periods between two operation tasks in the process. By implementing an Workflow Management System resource allocation and parallelization can be automated where possible to assure optimal use of process resources. \cite{gadatsch2020grundkurs}
+	\item \textbf{Shorten process lifetimes}: Managing processes manually requires handling tasks such as starting sub-processes or handling handovers from one entity to another and can lead to unnecessary waiting periods between two tasks. By implementing an \gls{wfms} resource allocation and parallelization can be automated where possible to assure optimal use of process resources. \cite{gadatsch2020grundkurs}
 	
-	\item \textbf{Reduction in process cost}: By reducing process lifetimes and increase productivity due to better handling resources can reduce process costs \cite{gadatsch2020grundkurs} but due to the high price for \gls{bpmn-engine}s the overall cost does not have to decrease necessarily \cite{gruber2009profitability}.
+	\item \textbf{Reduction in process cost}: By reducing process lifetimes and increase productivity due to better handling resources can reduce process costs \cite{gadatsch2020grundkurs} but due to the high price for \gls{bpmn-wokflow-management-system}s the overall cost does not have to decrease necessarily \cite{gruber2009profitability}.
 	
-	\item \textbf{Workload reduction}: As stated earlier, managing processes needs to be done either by an \gls{bpmn-engine} or manually which creates additional workload for an organization. Workloads for employees executing the processes are also kept steady due to dynamic resource assignment. \cite{fundamentals}\cite{gadatsch2020grundkurs}
+	\item \textbf{Workload reduction}: As stated earlier, managing processes needs to be done either by an \gls{bpmn-wokflow-management-system} or manually which creates additional workload for an organization. Workloads for employees executing the processes are also kept steady due to dynamic resource assignment. \cite{fundamentals}\cite{gadatsch2020grundkurs}
 	
-	\item \textbf{Enforce rules}: Defining the processes that is then directly executed and controlled by an \gls{bpmn-engine} enables the organization to enforce the execution of the process at it is designed. Following Rules and Protocols can partially be automated and enforcing guidelines and laws in an organization becomes easier. \cite{fundamentals}
+	\item \textbf{Enforce rules}: Defining the processes that is then directly executed and controlled by an \gls{bpmn-wokflow-management-system} enables the organization to enforce the execution of the process at it is designed. Following Rules and Protocols can partially be automated and enforcing guidelines and laws in an organization becomes easier. \cite{fundamentals}
 	
-	\item \textbf{Create Transparency}: Using an \gls{bpmn-engine} provides insights to the actually processes that are executed in the organization. It makes it easier to determine the performance of the processes by providing historical information of completed process instances and provides insight of the current status of processes that are still in progress. \cite{gadatsch2020grundkurs}
+	\item \textbf{Create Transparency}: Using an \gls{bpmn-wokflow-management-system} provides insights to the actually processes that are executed in the organization. It makes it easier to determine the performance of the processes by providing historical information of completed process instances and provides insight of the current status of processes that are still in progress. \cite{gadatsch2020grundkurs}
 \end{itemize}
 
 \section{Executable vs Conceptual Process Models}
-Process Models are inherently Business-oriented as their purpose is initially to define and visualize the processes happening in an organization. Business-oriented or  \gls{conceptual-bpmn} are meant to be read by domain experts and contain usually implicit information known to these domain experts \cite{fundamentals}. They are usually incomplete, meaning that not every possible outcome of a process is modeled. In fact, usually only the best-case scenario, also known as the \gls{happy-path}, of a process is modeled in an \gls{conceptual-bpmn} \cite{freund2019real}. \\~\\Because of this, business-oriented models cannot be executed in an \gls{bpmn-engine} as they are but have to be turned into an \gls{executable-bpmn}. \gls{executable-bpmn} are meant for IT-experts and should be a technical representation of the business process while still begin understandable by domain experts. They should leave no room for interpretation as they have to contain all the information necessary for the process to be executed using an \gls{bpmn-engine}. Besides the visual information, \gls{executable-bpmn} also need to contain execution properties like interface definitions and Variables that are used by the Process called \gls{process-variables}.\cite{fundamentals} \\~\\An algorithm on how to efficiently turn an \gls{conceptual-bpmn} executable as stated in the book \textit{Fundamentals of Business Process Management} \cite{fundamentals} is described in the next section. 
+Process Models are inherently Business-oriented as their purpose is initially to define and visualize the processes happening in an organization. Business-oriented or  \gls{conceptual-bpmn} are meant to be read by domain experts and contain usually implicit information known to these domain experts \cite{fundamentals}. They are usually incomplete, meaning that not every possible outcome of a process is modeled. In fact, usually only the best-case scenario, also known as the \gls{happy-path}, of a process is modeled in an \gls{conceptual-bpmn} \cite{freund2019real}. \\~\\Because of this, business-oriented models cannot be executed in an \gls{bpmn-wokflow-management-system} as they are but have to be turned into an \gls{executable-bpmn}. \gls{executable-bpmn} are meant for IT-experts and should be a technical representation of the business process while still begin understandable by domain experts. They should leave no room for interpretation as they have to contain all the information necessary for the process to be executed using an \gls{bpmn-wokflow-management-system}. Besides the visual information, \gls{executable-bpmn} also need to contain execution properties like interface definitions and Variables that are used by the Process called \gls{process-variables}.\cite{fundamentals} \\~\\An algorithm on how to efficiently turn an \gls{conceptual-bpmn} executable as stated in the book \textit{Fundamentals of Business Process Management} \cite{fundamentals} is described in the next section. 
 
 \section{Making Process Models executable}
 As stated earlier, \gls{bpmn} models can not directly be executed by a \gls{bpms} but have to be converted from an \gls{conceptual-bpmn} into an \gls{executable-bpmn}. 
@@ -31,7 +31,7 @@ There are different approaches how an \gls{executable-bpmn} can be derived from 
 \end{enumerate}
 
 \subsection{Identify the automation boundaries}
-The first step in turning an \gls{conceptual-bpmn} in an  \gls{executable-bpmn} is to identify which steps can be automated using a \gls{bpmn-engine}. 
+The first step in turning an \gls{conceptual-bpmn} in an  \gls{executable-bpmn} is to identify which steps can be automated using a \gls{bpmn-wokflow-management-system}. 
 
 Tasks which can inherently be automated are called \gls{automated-task}s \cite[p.~317]{fundamentals}. Taking a look at the BPMN 2.0 standard an \gls{automated-task} can be one of the following Task types:
 \begin{itemize}
@@ -77,7 +77,7 @@ Tasks which can inherently be automated are called \gls{automated-task}s \cite[p
 	\label{fig:automatedtasks} % \label has to be placed AFTER \caption (or \subcaption) to produce correct cross-references.
 \end{figure}
 
-Usually not every step of a Process can be fully automated. Processes can also have \textbf{\gls{manual-task}s} and \textbf{\gls{user-task}s}. A \textbf{\gls{user-task}} is a Task performed by a User with the aid of an \gls{bpmn-engine} while a \textbf{\gls{manual-task}} does not use any help from a business process execution engine. 
+Usually not every step of a Process can be fully automated. Processes can also have \textbf{\gls{manual-task}s} and \textbf{\gls{user-task}s}. A \textbf{\gls{user-task}} is a Task performed by a User with the aid of an \gls{bpmn-wokflow-management-system} while a \textbf{\gls{manual-task}} does not use any help from a business process execution engine. 
 
 \begin{figure}[h]
 	\centering
@@ -96,14 +96,14 @@ Usually not every step of a Process can be fully automated. Processes can also h
 	\caption{Manual and User Tasks according to the BPMN 2.0 standard \cite{bpmnstandard}} % Remove the [...] argument if the original caption should be used in the figure list.
 	\label{fig:nonautomatedtasks} % \label has to be placed AFTER \caption (or \subcaption) to produce correct cross-references.
 \end{figure}
-\subsection{Review manual tasks}
-As mentioned earlier \gls{manual-task}s are not automated and do also happen without the aid of a \gls{bpmn-engine}. In this step we need to analyse if the identified manual tasks in our \gls{bpmn}-model can be incorporated into the \gls{bpmn-engine}. This can be done in two ways:
+\subsection{Review manual tasks}\label{manual}
+As mentioned earlier \gls{manual-task}s are not automated and do also happen without the aid of a \gls{bpmn-wokflow-management-system}. In this step we need to analyse if the identified manual tasks in our \gls{bpmn}-model can be incorporated into the \gls{bpmn-wokflow-management-system}. This can be done in two ways:
 \begin{itemize}
 	\item \textbf{Automate the task}: Depending on the nature of the task that is currently performed manually, it might be possible to fully automate the task or to model the task as a \gls{receive-task} where the modelled task waits for a message that indicates the physical manual tasks completion.
 	\item \textbf{Turn it into a User task}: If the task cannot be automated or the organization lacks the resources to automate the task yet, it might be possible to turn the \gls{manual-task} into a \gls{user-task}. One possibility could be to dedicate a person in charge of the manual task to notify the \gls{bpmn-wokflow-management-system} on the completion of the task via a worklist handler. \cite{stefanov2014business}
 \end{itemize}
 
-In the case that neither an \gls{automated-task} nor an \gls{user-task} is suitable for modelling the \gls{manual-task} one might also consider isolating the task and modelling the rest of the process. If this is also not possible due to the manual task being crucial for the expressiveness of the model it might be reconsidered if this process can or should be executed using a \gls{bpmn-engine}\cite[p.~228]{freund2019real}
+In the case that neither an \gls{automated-task} nor an \gls{user-task} is suitable for modelling the \gls{manual-task} one might also consider isolating the task and modelling the rest of the process. If this is also not possible due to the manual task being crucial for the expressiveness of the model it might be reconsidered if this process can or should be executed using a \gls{bpmn-wokflow-management-system}\cite[p.~228]{freund2019real}
 
 \subsection{Complete the process model}
 Usually \gls{conceptual-bpmn}s are not complete and leave out certain informations that are seen as implicit knowledge or as not important by the person modelling the process but might be crucial if a complete picture of the process is needed for automation. 
@@ -130,7 +130,7 @@ It is also necessary to model the input and output data of our tasks in this ste
 	\label{fig:datastoreandobject} % \label has to be placed AFTER \caption (or \subcaption) to produce correct cross-references.
 \end{figure}
 
-\subsection{Bring the process model to an adequate granularity level}
+\subsection{Bring the process model to an adequate granularity level}\label{granulartity}
 The granularity of tasks modelled in an \gls{conceptual-bpmn} does differ from the granularity needed in an \gls{executable-bpmn}.
 The goal of process automation is not to automate as much as possible but to have a centralized \gls{bpmn-wokflow-management-system} that does not only decide what task has to be done when but also who needs to be doing this task. \cite{freund2019real}
 \\~\\Therefore consecutive tasks that are done by the same participant should be clustered together as one task to minimize handovers that have to be unnecessarily processed by the \gls{bpmn-wokflow-management-system}. \cite{fundamentals}
@@ -196,9 +196,36 @@ Similar to errors, escalations additionally have an \textbf{escalationCode} that
 As mentioned earlier, Process Variables are active during the whole Process life-cycle. Apart from this data than can be accessed globally, it is also possible to define input and output values for each Task or Event in our process-model. These values are only visible within the Task or Event and have to be defined as an \gls{xsd}-Schema File (similarly to complex process variables). \cite{fundamentals}
 
 \paragraph{Service Tasks}~\\
-In order for service tasks to call external application or web-services, the interaction with the given service has to be defined in the process model. Connected services need to provide an service interface that describes the available service-operations and their parameters as well as return values. Service-operations can be synchronous, meaning the process instance waits for the operation to finish and to return a value or error code, or asynchronous, meaning the process does not wait for a response and carries on with the process after calling the service. Based on the service interface definition, input and output variables have to be defined for the service-call. The \gls{bpmn-engine} does this by copying the above mentioned Input values of the Task into the service call and if necessary, copy the output values of the service call into the output values of the Service task. \cite{fundamentals}
+In order for service tasks to call external application or web-services, the interaction with the given service has to be defined in the process model. Connected services need to provide an service interface that describes the available service-operations and their parameters as well as return values. Service-operations can be synchronous, meaning the process instance waits for the operation to finish and to return a value or error code, or asynchronous, meaning the process does not wait for a response and carries on with the process after calling the service. Based on the service interface definition, input and output variables have to be defined for the service-call. The \gls{bpmn-wokflow-management-system} does this by copying the above mentioned Input values of the Task into the service call and if necessary, copy the output values of the service call into the output values of the Service task. \cite{fundamentals}
 
+\subsection{Apply Naming Conventions}
+\label{naming}
+It is recommended to apply naming conventions for BPMN 2.0 diagrams. While there are many suggestions for naming conventions, none is defined by the BPMN 2.0 standard \cite{bpmnstandard}. The following is a suggestion for naming different BPMN elements based on  \cite{fundamentals}  \cite{suarez2010best} and \cite{radulian2020rethinking}. 
 
+\paragraph{Events}~\\
+Names of Events should start with a business object (noun) followed by a verb. In order to indicate that something just happened, the verb should be in the past participle form. The noun can be specified by an adjective in front. Examples for good Event names: 
+\begin{itemize}
+	\item Order delivered
+	\item Large Order delivered
+\end{itemize}
 
+\paragraph{Tasks}~\\
+Tasks should be named starting with a verb and followed by a business object (noun). The object can be specified using an adjective. If needed, the task name can also answer how the task will be accomplished by appending an explanation to the task name. Examples for good task names:
+\begin{itemize}
+	\item deliver order
+	\item deliver large order
+	\item deliver large order with truck 
+\end{itemize}
 
+\paragraph{Gateways}~\\
+Gateways only need to be named if they are divergent exclusive Gateways. Divergent exclusive gateways should consist of at least a noun followed by a verb followed by a question mark to indicate what is evaluated at this gateway. Alternatively a whole questions can be asked. Examples for good gateway labels:
+\begin{itemize}
+	\item order delivered?
+	\item was order delivered in time?
+\end{itemize}
 
+\paragraph{Sequence Flows}~\\
+Sequence flows only need to be named if they come out if diverging Event based, exclusive or inclusive gateways. Sequence flows that follow one of those gateways should have labels that indicate the outcome of the gateways condition. 
+
+\paragraph{General Rules}~\\
+All Tasks, Events and Gateways should have a label. Sequence flows should have a label if they leave a exclusive, inclusive or event based gateway. Generally the naming convention should be in it consistent and for readability it is recommended to avoid long names. 
