@@ -53,9 +53,9 @@ One \textbf{AppliedRule} object has the following attributes:
 This section describes a set of possible suggestions for improving a BPMN Model. Not all of those rules where implemented as some are not suitable for automation or would be beyond the scope of this thesis. 
 
 \subsection{Comply with Naming Conventions}
-BPMN models, no matter if conceptual or executable, should meet naming conventions as it is described in section \ref{naming}. 
+BPMN models, no matter if conceptual or executable, should meet naming conventions as it is described in section \ref{naming}. One aspect of naming conventions is the recommended maximum length of five words for any label. 
 
-Since natural language processing would go beyond the scope of this thesis and naming conventions apply to not only executable BPMN, this suggestion for improvement was not automated in the context of this thesis.
+Since natural language processing would go beyond the scope of this thesis and naming conventions apply to not only executable BPMN, this suggestion for improvement was not fully automated in the context of this thesis. Because of its simplicity, suggesting to rename a element when the label is too long (greater than five words) was implemented.
 
 \subsection{Extend automation boundaries}
 The first step of turning an conceptual process model executable is identifying the automation boundaries \ref{automation}. In order to optimize na existing process one could think of extending those existing boundaries and brainstorming ideas to automatize tasks that are not yet automatable. 

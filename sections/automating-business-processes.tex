@@ -200,7 +200,7 @@ In order for service tasks to call external application or web-services, the int
 
 \subsection{Apply Naming Conventions}
 \label{naming}
-It is recommended to apply naming conventions for BPMN 2.0 diagrams. While there are many suggestions for naming conventions, none is defined by the BPMN 2.0 standard \cite{bpmnstandard}. The following is a suggestion for naming different BPMN elements based on  \cite{fundamentals}  \cite{suarez2010best} and \cite{radulian2020rethinking}. 
+It is recommended to apply naming conventions for BPMN 2.0 diagrams. While there are many suggestions for naming conventions, none is defined by the BPMN 2.0 standard \cite{bpmnstandard}. The following is a suggestion for naming different BPMN elements based on  \cite{freund2019real}, \cite{c}   \cite{suarez2010best} and \cite{radulian2020rethinking}. 
 
 \paragraph{Events}~\\
 Names of Events should start with a business object (noun) followed by a verb. In order to indicate that something just happened, the verb should be in the past participle form. The noun can be specified by an adjective in front. Examples for good Event names: 
@@ -228,4 +228,4 @@ Gateways only need to be named if they are divergent exclusive Gateways. Diverge
 Sequence flows only need to be named if they come out if diverging Event based, exclusive or inclusive gateways. Sequence flows that follow one of those gateways should have labels that indicate the outcome of the gateways condition. 
 
 \paragraph{General Rules}~\\
-All Tasks, Events and Gateways should have a label. Sequence flows should have a label if they leave a exclusive, inclusive or event based gateway. Generally the naming convention should be in it consistent and for readability it is recommended to avoid long names. 
+All Tasks, Events and Gateways should have a label. Sequence flows should have a label if they leave a exclusive, inclusive or event based gateway. Generally the naming convention should be in it consistent and for readability it is recommended to avoid long names. As a rule of thumb, having labels that are no longer than 5 words is recommended\cite{fundamentals}. 
