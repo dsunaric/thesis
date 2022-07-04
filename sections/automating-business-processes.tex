@@ -153,8 +153,7 @@ The final step in turning an \gls{conceptual-bpmn} executable is to specify the 
 
 \paragraph{Process Variables}~\\
 In order to use data in different elements of our process, we need process variables that can be read, created and modified during the processes execution. Every Process variable has a \textbf{data type} that can either be simple (strings, integers, doubles, booleans, dates, times, ...) or complex (composed of other types). A complex Type needs to be described as an \gls{XSD}-Schema File.\\
-\lstset{language=XML}
-	\begin{lstlisting}[caption={The \gls{xml}-Schema Definiton for a complex type 'person'},captionpos=b]
+	\begin{lstlisting}[language=xml,caption={The \gls{xml}-Schema Definiton for a complex type 'person'},captionpos=b]
 <xs:element name="person">
 	<xs:complexType>
 		<xs:sequence>
@@ -166,7 +165,7 @@ In order to use data in different elements of our process, we need process varia
 	</xs:complexType>
 </xs:element>
 	\end{lstlisting}
-\begin{lstlisting}[caption={An instance of the complex type 'person'},captionpos=b]
+\begin{lstlisting}[language=xml,caption={An instance of the complex type 'person'},captionpos=b]
 <person>
 	<name>Dragana Sunaric</name>
 	<address>Wiedner-Hauptstrasse 5</address>
@@ -178,17 +177,17 @@ In order to use data in different elements of our process, we need process varia
 
 ~\\The definition of common Errors, Messages and Escalations that are thrown or listened to by Events and Tasks are aslo part of the execution properties. Every Element has at least an \textbf{id} that identifies the given Element and a descriptive \textbf{name} of the element. \cite{bpmnstandard}
 \paragraph{Messages}~\\
-	\begin{lstlisting}
+	\begin{lstlisting}[language=xml]
 <message id="Message_ID" name="Message_NAME"/>
 	\end{lstlisting}
 \paragraph{Errors}~\\
 Errors additionally have an \textbf{errorCode} that specifies the given Error. Events can listen for this specific error code and trigger when it is thrown.\\ 
-	\begin{lstlisting}
+	\begin{lstlisting}[language=xml]
 <error id="Error_ID" name="Error_NAME" errorCode="Error_CODE"/>
 	\end{lstlisting}
 \paragraph{Escalations}~\\
 Similar to errors, escalations additionally have an \textbf{escalationCode} that specifies the given Error and can be listened to by events. \\
-	\begin{lstlisting}
+	\begin{lstlisting}[language=xml]
 <escalation id="Esc_ID" name="Esc_NAME" escalationCode="Esc_CODE"/>
 \end{lstlisting}
 
