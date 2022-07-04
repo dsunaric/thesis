@@ -52,7 +52,7 @@ One \textbf{AppliedRule} object has the following attributes:
 \section{Suggestions for improvement}\label{last}
 This section describes a set of possible suggestions for improving a BPMN Model. Not all of those rules where implemented as some are not suitable for automation or would be beyond the scope of this thesis. 
 
-\subsection{Comply with Naming Conventions}
+\subsection{Comply with Naming Conventions}\label{naming-con}
 BPMN models, no matter if conceptual or executable, should meet naming conventions as it is described in section \ref{naming}. One aspect of naming conventions is the recommended maximum length of five words for any label. 
 
 Since natural language processing would go beyond the scope of this thesis and naming conventions apply to not only executable BPMN, this suggestion for improvement was not fully automated in the context of this thesis. Because of its simplicity, suggesting to rename a element when the label is too long (greater than five words) was implemented.
@@ -62,7 +62,7 @@ The first step of turning an conceptual process model executable is identifying 
 
 This requires a lot of domain specific knowledge and can therefore not be simply implemented.
 
-\subsection{Eliminate Manual Tasks}
+\subsection{Eliminate Manual Tasks}\ref{soft-manual}
 As describes in section \ref{manual} Manual Tasks should not be part of an executable BPMN diagram and should if possible be automated using service tasks or, if that is not possible, be replaced by user tasks. 
 
 Manual tasks are identified by the software. The returned effected elements represent a list of manual tasks in the given diagram.
@@ -94,7 +94,7 @@ An example on when this rule is satisfied can be found in figure \ref{fig:exampl
 	\label{fig:example-EX-fix} 
 \end{figure}
 
-\subsection{Inclusive Gateways over combining parallel and exclusive Gateways}
+\subsection{Inclusive Gateways over combining parallel and exclusive Gateways}\ref{inc-sw}
 In order to save flownodes, inclusive gateways should be used instead of a parallel gateway followed by one or more exclusive gateways. An example for this kind of pattern is shown in \ref{fig:example-GW}.
 
 \begin{figure}[H]
