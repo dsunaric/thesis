@@ -72,7 +72,7 @@ Another manual step to improve a process model, is making sure the process model
 
 Since this would also require domain specific knowledge, the software does not include analyzing the process model for incompleteness.
 
-\subsection{No two consecutive Tasks handled by the same resource}
+\subsection{No two consecutive Tasks handled by the same resource}\label{merge-section}
 Two task that are executed one after the other should be merged, if they have the same enitity executing the task. As described in section \ref{granulartity}, bringing the model to an adequate granularity level minimizes handovers and overhead. In case of User tasks this means the same usergroup is executing both tasks. Automated Tasks that follow each other should also always be merged to minimize flownodes.
 
 

@@ -7,7 +7,7 @@ At first, the example BPMN model used for this case study and the evaluation tha
 In the end, the original BPMN will be compared with the final result using quantitive emasues as described in section \ref{quant}.
 
 \section{The example model}
-The used BPMN model for this chapter will be a client registration process which is a real live process used in the telecommunication filed that was changed in order to be used in this thesis. The graphical representation of the process model can be found in figure \ref{fig:example-process} and the full XML structure is in the appendix section \ref{app-1}
+The used BPMN model for this chapter will be a fictitious client registration process which is a adapted real live process used in the telecommunication in order to be used in this thesis. The graphical representation of the process model can be found in figure \ref{fig:example-process} and the full XML structure is in the appendix section \ref{app-1}
 
 \begin{figure}[H]
 	\centering
@@ -20,7 +20,7 @@ The used BPMN model for this chapter will be a client registration process which
 In order to evaluate the best practices that where automated by the software as mentioned in section \ref{last}, the BPMN Model was given as input for the software. The full output can be found in section \ref{app-1} the following output for each Suggestion/Rule was given:
 \paragraph{Comply with Naming Conventions}~\\
 As described in chapter \ref{naming-con}, this algorithm scans the BPMN model for events, tasks or gateways that have more than five words in their label. The following list of elements is returned that violate this rule:
-\begin{lstlisting}[language=json]
+\begin{lstlisting}[language=json,label=lst:naming]
 "effectedElements": [
 {
 	"id": "ServiceTask_DefaultDocWorkflowPostAwaitConfirmation",
@@ -42,7 +42,7 @@ As described in chapter \ref{naming-con}, this algorithm scans the BPMN model fo
 
 \paragraph{Eliminate Manual Tasks}~\\
 When searching for manual tasks in the process (see section \ref{soft-manual}), only one can be identified and is returned:
-\begin{lstlisting}[language=json]
+\begin{lstlisting}[language=json,label=lst:manual]
 "effectedElements": [
 {
 	"id": "data_to_warehouse",
@@ -52,7 +52,7 @@ When searching for manual tasks in the process (see section \ref{soft-manual}), 
 \end{lstlisting}
 \paragraph{No two consecutive Tasks handled by the same resource}~\\
 Another rule that was implemented was that no two consecutive tasks should be processed by the same resource. The Software identified the following tasks that could be merged with its successor:
-\begin{lstlisting}[language=json]
+\begin{lstlisting}[language=json,label=lst:merge]
 "effectedElements": [
 {
 	"id": "CancelRelatedWebIdent",
@@ -98,27 +98,104 @@ As described in section \ref{inc-sw} it is preferred to use inclusive gateways i
 ]
 \end{lstlisting}
 \section{Comply with Naming Conventions}
-%TODO
-%see  https://docs.camunda.io/docs/components/best-practices/modeling/creating-readable-process-models/
-%   & https://docs.camunda.io/docs/components/best-practices/modeling/naming-bpmn-elements/
-\subsection{renaming tasks}
-\subsection{renaming gateways}
-\subsection{rename events}
+Based on the naming conventions defined in section \ref{naming} unnamed Tasks, Events and Gateways where named and Elements returned in listing \ref{lst:naming} where renamed. In figure \ref{fig:naming-org} a segment of the example BPMN is shown and figure \ref{fig:naming-new} shows the corresponding changes after renaming. 
 
-\section{Extend automation boundaries}
-%TODO
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{graphics/case-study-naming-org}
+	\caption{Segment of the BPMN model in figure \ref{fig:example-process}}
+	\label{fig:naming-org}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{graphics/case-study-naming-new}
+	\caption{Segment \ref{fig:naming-org} with implementing naming conventions}
+	\label{fig:naming-new}
+\end{figure}
+
+The full renaming change can be found in the appendix chapter \ref{BPMN-after-naming}. The full XMl representation of this process can be found in \cite{online-BPMN-after-naming}
 
 \section{Eliminate Manual Tasks}
-%TODO
+The only manual task in this BPMN model is the \textit{cancel promotion} task. Cancelling promotions can only be done manually by a service agent in this fictitious case and can therefore not be automated. In this case, the manual task can be change into a \textit{user task} and the advantages of a worklist handler can be utilized as described in section \ref{manual}.
+The original segment with the manual task can be seen in figure \ref{fig:manual-org}. The corresponding change in this section of the mode is shown in figure \ref{fig:manual-new}. 
 
-\section{Complete the process model}
-%TODO
+
+\begin{minipage}[t]{0.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{graphics/case-study-manual-org}
+		\caption{Segment of the BPMN model in figure \ref{fig:example-process} with the only manual tasks}
+		\label{fig:manual-org}
+	\end{figure}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{graphics/case-study-manual-new}
+	\caption{Segment that is shown in figure \ref{fig:naming-org} with changing the manual tasks to a user task}
+	\label{fig:manual-new}
+\end{figure}
+\end{minipage}
+
+The full BPMN change can be found in \cite{online-BPMN-after-manual}.
+
+\section{Extend automation boundaries}
+Since the process model is already fully automated apart from the \textit{cancel promotion} task and this task is not automatable yet, as already mentioned in the last section, the automation boundaries cannot be extended further. 
 
 \section{No two consecutive Tasks handled by the same resource}
-%TODO
+According to the rules described in section \ref{merge-section}, the list of elements given in \ref{lst:merge} can be merged with their direct successor. The segements of the BPMN model with the listed elements can be found in figures \ref{fig:merge-1-org} and \ref{fig:merge-2-org} and the respective change is shown in figures \ref{fig:merge-1-new} and \ref{fig:merge-2-new}. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{graphics/case-study-merge-org-1}
+	\caption{Segment of the BPMN model in figure \ref{fig:example-process} with consecutive service tasks}
+	\label{fig:merge-1-org}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{graphics/case-study-merge-new-1}
+	\caption{Segment that is shown in figure \ref{fig:merge-1-org} with merged consecutive service tasks}
+	\label{fig:merge-1-new}
+\end{figure}
+
+\begin{minipage}[t]{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\textwidth]{graphics/case-study-merge-org-2}
+	\caption{Segment of the BPMN model in figure \ref{fig:example-process} with consecutive service tasks}
+	\label{fig:merge-2-org}
+\end{figure}
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\textwidth]{graphics/case-study-merge-new-2}
+	\caption{Segment that is shown in figure \ref{fig:merge-2-org} with merged consecutive service tasks}
+	\label{fig:merge-2-new}
+\end{figure}
+\end{minipage}
+
+The full BPMN change can be seen in the appendix section \ref{online-BPMN-after-merge}. 
 
 \section{Inclusive Gateways over combining parallel and exclusive Gateways}
-%TODO
+The only case in this BPMN model where a combination of parallel and exclusive gateways was used instead of an inclusive gateway is in the segment shown in figure \ref{fig:exclusive-org}. The corresponding change in this section of the model is shown in figure \ref{fig:exclusive-new}. 
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{graphics/case-study-exclusive-org}
+	\caption{Segment of the BPMN model in figure \ref{fig:example-process} where parallel and exclusive tasks are combined instead of using an inclusive gateway}
+	\label{fig:exclusive-org}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{graphics/case-study-exclusive-new}
+	\caption{Segment that is shown in figure \ref{fig:exclusive-org} with using an inclusive gateway}
+	\label{fig:exclusive-new}
+\end{figure}
+
+The full BPMN change can be found in \cite{online-BPMN-after-exclusive}.
 
 \section{Value Added Analysis}
 %TODO
