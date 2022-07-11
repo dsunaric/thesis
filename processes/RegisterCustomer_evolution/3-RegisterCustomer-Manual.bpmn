@@ -411,7 +411,7 @@
       <bpmn:incoming>Flow_10d9biu</bpmn:incoming>
       <bpmn:outgoing>Flow_1kngr5a</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:manualTask id="Task_0chmr8b" name="cancel promotion" isForCompensation="true" />
+    <bpmn:userTask id="Task_0chmr8b" name="cancel promotion" isForCompensation="true" />
     <bpmn:association id="Association_02dddhv" associationDirection="One" sourceRef="BoundaryEvent_12oe82t" targetRef="Task_0chmr8b" />
   </bpmn:process>
   <bpmn:message id="Message_0u505yf" name="cleanUpPendingCS" />
@@ -840,6 +840,35 @@
       <bpmndi:BPMNShape id="ServiceTask_0c3bn33_di" bpmnElement="SetConsents">
         <dc:Bounds x="1720" y="290" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_01nglop_di" bpmnElement="Task_0chmr8b">
+        <dc:Bounds x="1293" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SubProcess_0za8t6u_di" bpmnElement="SubProcess_0lnms3q" isExpanded="true">
+        <dc:Bounds x="1040" y="280" width="208" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0n6exz3_di" bpmnElement="SequenceFlow_0n6exz3">
+        <di:waypoint x="1162" y="362" />
+        <di:waypoint x="1192" y="362" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_08ovz6d_di" bpmnElement="SequenceFlow_08ovz6d">
+        <di:waypoint x="1098" y="362" />
+        <di:waypoint x="1126" y="362" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0149dfg_di" bpmnElement="EndEvent_0149dfg">
+        <dc:Bounds x="1192" y="344" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_14yuzk9_di" bpmnElement="IntermediateThrowEvent_1fpdp8v">
+        <dc:Bounds x="1062" y="344" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1047" y="323" width="66" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="IntermediateThrowEvent_00bbi8s_di" bpmnElement="IntermediateThrowEvent_01y7etd">
+        <dc:Bounds x="1126" y="344" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1102" y="387" width="84" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_12dsxr8_di" bpmnElement="save_member_for_riskident">
         <dc:Bounds x="1720" y="162" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -852,39 +881,6 @@
       <bpmndi:BPMNShape id="Activity_02wyx65_di" bpmnElement="data_to_warehouse">
         <dc:Bounds x="1105" y="880" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0b3fzdc_di" bpmnElement="Task_0chmr8b">
-        <dc:Bounds x="1293" y="320" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="SubProcess_0za8t6u_di" bpmnElement="SubProcess_0lnms3q" isExpanded="true">
-        <dc:Bounds x="1040" y="280" width="208" height="120" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SequenceFlow_0n6exz3_di" bpmnElement="SequenceFlow_0n6exz3">
-        <di:waypoint x="1158" y="362" />
-        <di:waypoint x="1192" y="362" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_08ovz6d_di" bpmnElement="SequenceFlow_08ovz6d">
-        <di:waypoint x="1098" y="362" />
-        <di:waypoint x="1122" y="362" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="EndEvent_0149dfg_di" bpmnElement="EndEvent_0149dfg">
-        <dc:Bounds x="1192" y="344" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="StartEvent_14yuzk9_di" bpmnElement="IntermediateThrowEvent_1fpdp8v">
-        <dc:Bounds x="1062" y="344" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1047" y="323" width="66" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="IntermediateThrowEvent_00bbi8s_di" bpmnElement="IntermediateThrowEvent_01y7etd">
-        <dc:Bounds x="1122" y="344" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1098" y="387" width="84" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Association_02dddhv_di" bpmnElement="Association_02dddhv">
-        <di:waypoint x="1343" y="260" />
-        <di:waypoint x="1343" y="320" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BoundaryEvent_19hkf2s_di" bpmnElement="BoundaryEvent_CanceledProcessInstance">
         <dc:Bounds x="544" y="742" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -936,6 +932,10 @@
           <dc:Bounds x="1370" y="250" width="59" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_02dddhv_di" bpmnElement="Association_02dddhv">
+        <di:waypoint x="1343" y="260" />
+        <di:waypoint x="1343" y="320" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
