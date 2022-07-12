@@ -185,10 +185,6 @@
       <bpmn:incoming>SequenceFlow_0c3ost9</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0pa3oq9</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:endEvent id="Event_1g7y40f">
-      <bpmn:incoming>Flow_09h6k0y</bpmn:incoming>
-      <bpmn:terminateEventDefinition id="TerminateEventDefinition_1b9xvwh" />
-    </bpmn:endEvent>
     <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_0qb92hs" name="cancel promotion">
       <bpmn:incoming>SequenceFlow_1ha3mae</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0qfpg3f</bpmn:outgoing>
@@ -327,10 +323,6 @@
       <bpmn:outgoing>SequenceFlow_001ykcn</bpmn:outgoing>
       <bpmn:errorEventDefinition errorRef="Error_0t8ab2m" />
     </bpmn:boundaryEvent>
-    <bpmn:boundaryEvent id="Event_0yp2af5" name="process canceled externally" attachedToRef="CallActivity_AwaitSimActivation">
-      <bpmn:outgoing>Flow_09h6k0y</bpmn:outgoing>
-      <bpmn:escalationEventDefinition id="EscalationEventDefinition_1k1d9rc" escalationRef="Escalation_0zop4uc" />
-    </bpmn:boundaryEvent>
     <bpmn:boundaryEvent id="BoundaryEvent_IdentSubProcessNotSucessfull" name="ident check failed" attachedToRef="CallActivity_DeferredIdAndCsProcess">
       <bpmn:outgoing>SequenceFlow_1ha3mae</bpmn:outgoing>
       <bpmn:escalationEventDefinition escalationRef="Escalation_075oh1i" />
@@ -412,6 +404,14 @@
       <bpmn:outgoing>Flow_1kngr5a</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:userTask id="Task_0chmr8b" name="cancel promotion" isForCompensation="true" />
+    <bpmn:boundaryEvent id="Event_0yp2af5" name="process canceled externally" attachedToRef="CallActivity_AwaitSimActivation">
+      <bpmn:outgoing>Flow_09h6k0y</bpmn:outgoing>
+      <bpmn:escalationEventDefinition id="EscalationEventDefinition_1k1d9rc" escalationRef="Escalation_0zop4uc" />
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_1g7y40f">
+      <bpmn:incoming>Flow_09h6k0y</bpmn:incoming>
+      <bpmn:terminateEventDefinition id="TerminateEventDefinition_1b9xvwh" />
+    </bpmn:endEvent>
     <bpmn:association id="Association_02dddhv" associationDirection="One" sourceRef="BoundaryEvent_12oe82t" targetRef="Task_0chmr8b" />
   </bpmn:process>
   <bpmn:message id="Message_0u505yf" name="cleanUpPendingCS" />
@@ -492,9 +492,9 @@
         <di:waypoint x="499" y="696" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_09h6k0y_di" bpmnElement="Flow_09h6k0y">
-        <di:waypoint x="895" y="858" />
-        <di:waypoint x="895" y="881" />
-        <di:waypoint x="957" y="881" />
+        <di:waypoint x="895" y="742" />
+        <di:waypoint x="895" y="710" />
+        <di:waypoint x="943" y="710" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1pzsrpa_di" bpmnElement="SequenceFlow_1pzsrpa">
         <di:waypoint x="1155" y="775" />
@@ -786,9 +786,6 @@
       <bpmndi:BPMNShape id="Activity_0fnlhu1_di" bpmnElement="CallActivity_AwaitSimActivation">
         <dc:Bounds x="870" y="760" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0zdny8x_di" bpmnElement="Event_1g7y40f">
-        <dc:Bounds x="957" y="863" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="IntermediateThrowEvent_04wawya_di" bpmnElement="IntermediateThrowEvent_0qb92hs">
         <dc:Bounds x="463" y="678" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -842,6 +839,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01nglop_di" bpmnElement="Task_0chmr8b">
         <dc:Bounds x="1293" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zdny8x_di" bpmnElement="Event_1g7y40f">
+        <dc:Bounds x="943" y="692" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SubProcess_0za8t6u_di" bpmnElement="SubProcess_0lnms3q" isExpanded="true">
         <dc:Bounds x="1040" y="280" width="208" height="120" />
@@ -899,12 +899,6 @@
           <dc:Bounds x="457" y="729" width="85" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_00sm6oq_di" bpmnElement="Event_0yp2af5">
-        <dc:Bounds x="877" y="822" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="837" y="865" width="86" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BoundaryEvent_13rs7mv_di" bpmnElement="BoundaryEvent_Order_Lifetime">
         <dc:Bounds x="733" y="422" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -936,6 +930,12 @@
         <di:waypoint x="1343" y="260" />
         <di:waypoint x="1343" y="320" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_00sm6oq_di" bpmnElement="Event_0yp2af5">
+        <dc:Bounds x="877" y="742" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="797" y="716" width="86" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
