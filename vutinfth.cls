@@ -26,10 +26,10 @@
 %% This work also consists of the file intro.tex.
 %% 
 %% vutinfth.dtx
-%% Copyright (C) 2014-2017 by Thomas Auzinger <thomas@auzinger.name>
+%% Copyright (C) 2014-2020 by Thomas Auzinger <thomas@auzinger.name>
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{vutinfth}
-    [2017/06/19 v1.7 TU Wien Faculty of Informatics thesis template]
+    [2020/02/20 v1.10 TU Wien Faculty of Informatics thesis template]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,11 +79,11 @@
 \newcommand{\vutinfth@normalsize}{\fontsize{11}{13.6}\selectfont}%
 \newenvironment{SFFont}[1]{%
   \begingroup
-    \sfdefault
+    \sffamily
     \global\let\vutinfth@f@family@tmp=\f@family
   \endgroup
   \renewcommand{\sfdefault}{#1}%
-  \ifdefstrequal{\f@family}{\vutinfth@f@family@tmp}{\sfdefault}{}%
+  \ifdefstrequal{\f@family}{\vutinfth@f@family@tmp}{\sffamily}{}%
 }{%
   \renewcommand{\sfdefault}{\vutinfth@f@family@tmp}%
 }%
@@ -370,7 +370,6 @@
     }%
   }{}%
 }%
-\CreateData{address}%
 \CreateData{regnumber}%
 \CreateData{firstreviewerdata}%
 \CreateData{secondreviewerdata}%
@@ -532,29 +531,18 @@
   \setlength{\baselineskip}{\vutinfth@tmp@baselineskip}%
   \setlength{\parskip}{\vutinfth@tmp@parskip}%
 }%
-\newsetlength{\vutinfth@header@placement}{-41.49731pt}%
-\newsetlength{\vutinfth@bar@width}{511bp}%
-\newsetlength{\vutinfth@bar@height}{47bp}%
-\newsetlength{\vutinfth@bar@pivot@x}{330.71bp}%
-\newsetlength{\vutinfth@bar@pivot@y}{25.31bp}%
-\newsetlength{\vutinfth@logo@height}{46bp}%
-\newsetlength{\vutinfth@logo@pivot@x}{4.57bp}%
-\newsetlength{\vutinfth@logo@pivot@y}{5.37bp}%
-\newsetlength{\vutinfth@logo@offset@height}{\vutinfth@logo@height
-  + \vutinfth@bar@pivot@y - \vutinfth@logo@pivot@y}%
-\newsetlength{\vutinfth@logo@offset@x}{-\vutinfth@bar@width
-  + \vutinfth@bar@pivot@x - \vutinfth@logo@pivot@x}%
-\newsetlength{\vutinfth@logo@offset@y}{
-  - \vutinfth@bar@pivot@y + \vutinfth@logo@pivot@y}%
+\newsetlength{\vutinfth@logo@offset@x}{10.6mm}%
+\newsetlength{\vutinfth@logo@offset@y}{22mm}%
+\newsetlength{\vutinfth@logo@width@safe}{74mm}%
+\newsetlength{\vutinfth@logo@height}{11mm}%
+\newsetlength{\vutinfth@header@width}{\paperwidth - \vutinfth@logo@offset@x - \vutinfth@logo@offset@x}%
+\newsetlength{\vutinfth@header@height}{\vutinfth@logo@height}%
+\newsetlength{\vutinfth@header@separator}{-12mm}%
 \newcommand{\vutinfth@header@titlepage}{%
-  \centering
-  \begin{minipage}[b][\vutinfth@logo@offset@height][t]{%
-      \vutinfth@bar@width
-    }%
-    \hspace*{\vutinfth@logo@offset@x}%
-    \raisebox{\vutinfth@logo@offset@y}{%
-    }%
-  \end{minipage}%
+  \setlength{\unitlength}{1mm}%
+  \begin{picture}(74, 11)%
+    {\includegraphics[height=\vutinfth@logo@height]{Logo-schwarz.pdf}}
+  \end{picture}\hfill
 }%
 \newcommand{\vutinfth@footer@titlepage}{%
   \centering
@@ -564,12 +552,12 @@
     A-1040 Wien \vutinfth@squarebullet\space
     Karlsplatz 13 \vutinfth@squarebullet\space
     Tel. +43-1-58801-0 \vutinfth@squarebullet\space
-    www.tuwien.ac.at%
+    www.tuwien.at%
   \end{minipage}%
 }%
 \makepagestyle{vutinfth@pagestyle@titlepage}%
 \makerunningwidth{vutinfth@pagestyle@titlepage}[\textwidth]{%
-  \vutinfth@bar@width}%
+  \vutinfth@header@width}%
 \makeheadposition{vutinfth@pagestyle@titlepage}{%
   center}{center}{center}{center}%
 \makeevenhead{vutinfth@pagestyle@titlepage}{}{%
@@ -727,8 +715,8 @@
   \thispagestyle{vutinfth@pagestyle@titlepage}%
   \newgeometry{%
     left=2.4cm,right=2.4cm,bottom=2.5cm,top=2cm,
-    headsep=\vutinfth@header@placement,
-    head=2\vutinfth@logo@offset@height
+    headsep=\vutinfth@header@separator,
+    head=\vutinfth@header@height
   }%
   \vutinfth@savelayout
   \setlength{\parindent}{0pt}%
@@ -803,8 +791,7 @@
   \begin{SFFont}{phv}%
     \sffamily
       \chapter*{\vutinfth@polylingual@StatementChapter}%
-      \vutinfth@person@author@fullname\\
-      \vutinfth@data@address\par
+      \vutinfth@person@author@fullname\par
       \vspace{1.2cm}%
       {\normalfont\vutinfth@polylingual@Statement}\par
       \vspace{1.2cm}%
