@@ -1,21 +1,18 @@
-\gls{bpmn} is an widely used and established diagramming language with the purpose of visualizing business processes in organizations. Process models are usually created by process analysts together with domain experts. \gls{bpmn}-models created that way contain incomplete and implicit information for the specific business domain and are therefore called \gls{conceptual-bpmn}. By involving IT-experts these \gls{conceptual-bpmn}s can be made executable and automated using a \gls{wfms}. \cite{fundamentals}
-
 Today \gls{wfms}s like \gls{camunda}  and \gls{alfresco} are widely used by big organizations \cite{camunda-customers} \cite{activity-customers}. Real-life processes being executed in \gls{wfms}s can be complex and have to be changed and reevaluated together with the software that is executed in these processes as requirements and guidelines for the specific domain change continuous. 
 
-Using an \gls{wfms} to directly automate processes defined as \gls{bpmn} has the advantage to be readable for IT-experts as well as domain-experts. As a consequence both parties have a common understanding of the process and communication is easier when changes have to be made to the process or the software. In order for the cooperation between IT and business to work smoothly, \gls{executable-bpmn} should be as simple to understand as possible and be in line with known standards and best practices. 
+Using an \gls{wfms} to directly automate processes defined as \gls{bpmn} has the advantage to be readable for IT experts as well as domain experts. As a consequence both parties have a common understanding of the process and communication is easier when changes have to be made to the process or the software. For the cooperation between IT and business to work smoothly, \gls{executable-bpmn} should be as simple to understand as possible and be in line with known standards and best practices. 
 
-Applying guidelines for good \gls{executable-bpmn}s does not only increase readability but can also have direct impact on process costs. Due to the pricing scheme of some enterprise \gls{wfms}s, which take into account the total number of nodes passed by process instances, eliminating non necessary handovers and therefore reducing the number of nodes in the \gls{bpmn} model, can have an impact on the required license. 
+Applying guidelines for good \gls{executable-bpmn}s does not only increase readability but can also have a direct impact on process costs. Due to the pricing scheme of some enterprise \gls{wfms}s, which take into account the total number of nodes passed by process instances, eliminating nonnecessary handovers and therefore reducing the number of nodes in the \gls{bpmn} model, can have an impact on the required license. 
 
 \section{Goal of This Thesis}
-The goal of this thesis is to give practical guidance on how to apply best practices and methodologies to create and good \gls{executable-bpmn}s and to improve existing models to satisfy these best practices. 
+The goal of this thesis is to give practical guidance on how to apply best practices and methodologies to create good \gls{executable-bpmn}s and to improve existing models to satisfy these best practices. 
 
 
 \section{Structure of This Thesis}
 This goal will be achieved by stating the current research on creating \gls{executable-bpmn}s in chapter \ref{chapter-2}. 
 
-After that, this work will take a look at methods for transforming and improving existing \gls{executable-bpmn}s and how to use them to create models in line with the stated best practices. In order to compare two process models, this work will also provide methods for measuring metrics like time and cost of processes defined as \gls{bpmn} models. This will be shown in chapter \ref{chapter-3}
+After that, this work will take a look at methods for transforming and improving existing \gls{executable-bpmn}s and how to use them to create models in line with the stated best practices. To compare two process models, this work will also provide methods for measuring metrics like time and cost of processes defined as \gls{bpmn} models. This will be shown in chapter \ref{chapter-3}
 
-Along with this thesis a software was developed that scans a given BPMN model for used Anti-patterns.The documentation and implementation details of the developed software can be found in \ref{chapter-4}.  
+Along with this thesis, a software was developed that scans a given BPMN model for used Anti-patterns. The documentation and implementation details of the developed software can be found in \ref{chapter-4}.  
 
-Finally this thesis will provide detailed information about how to use mentioned guidelines together with the developed software in practice with a case study in chapter \ref{chapter-5}.
-
+Finally, this thesis will provide detailed information about how to use mentioned guidelines together with the developed software in practice with a case study in chapter \ref{chapter-5}.

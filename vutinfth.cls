@@ -79,11 +79,11 @@
 \newcommand{\vutinfth@normalsize}{\fontsize{11}{13.6}\selectfont}%
 \newenvironment{SFFont}[1]{%
   \begingroup
-    \sffamily
+    \sfdefault
     \global\let\vutinfth@f@family@tmp=\f@family
   \endgroup
   \renewcommand{\sfdefault}{#1}%
-  \ifdefstrequal{\f@family}{\vutinfth@f@family@tmp}{\sffamily}{}%
+  \ifdefstrequal{\f@family}{\vutinfth@f@family@tmp}{\sfdefault}{}%
 }{%
   \renewcommand{\sfdefault}{\vutinfth@f@family@tmp}%
 }%

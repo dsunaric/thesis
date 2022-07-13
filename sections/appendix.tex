@@ -42,8 +42,8 @@ The following output shows the output of the implemented software when giving th
 {
 	"title": "No manual Tasks are allowed",
 	"description": "Manual Tasks should not be part of an executable BPMN diagram",
-	"details": "The Returned Effected Elements represent a list of manual tasks in the given diagram",
-	"effectedElements": [
+	"details": "The Returned affected Elements represent a list of manual tasks in the given diagram",
+	"affectedElements": [
 	{
 		"id": "data_to_warehouse",
 		"name": "store data into datastore",
@@ -54,8 +54,8 @@ The following output shows the output of the implemented software when giving th
 {
 	"title": "Event based gateways instead of a parallel gateway followed by exclusive gateways",
 	"description": "Event based gateways should be used instead of a parallel gateway followed by one or more exclusive gateways",
-	"details": "This Rule applied whenever a parallel gateways is followed by one or more exclusive gateways. The returned Effected Elements are a list of parallel gateways that are followed by one or more exclusive gateways in the given diagram",
-	"effectedElements": [
+	"details": "This Rule applied whenever a parallel gateways is followed by one or more exclusive gateways. The returned affected Elements are a list of parallel gateways that are followed by one or more exclusive gateways in the given diagram",
+	"affectedElements": [
 	{
 		"id": "ParallelGateway_0crudor",
 		"name": null,
@@ -66,8 +66,8 @@ The following output shows the output of the implemented software when giving th
 {
 	"title": "Apply naming conventions",
 	"description": "One aspect of naming convention is the length of labels, this rule scanns the bpmn for rlements with long labels (> 5 words)",
-	"details": "The returned effected elements are all elements with a label that has more than 5 words",
-	"effectedElements": [
+	"details": "The returned affected elements are all elements with a label that has more than 5 words",
+	"affectedElements": [
 	{
 		"id": "ServiceTask_DefaultDocWorkflowPostAwaitConfirmation",
 		"name": "validate address, validate payment and create contract",
