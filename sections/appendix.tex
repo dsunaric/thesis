@@ -1,4 +1,4 @@
-\section{BPMN example output}\label{app-1}
+\section{BPMN example output}\label{app-output}
 The following output shows the output of the implemented software when giving the example \ref{fig:example-process} BPMN as input.
 \begin{lstlisting}[breaklines=true, language=json]
 [
@@ -87,10 +87,51 @@ The following output shows the output of the implemented software when giving th
 }
 ]
 \end{lstlisting}
+\section{Case Study - Implemented Aprovements}\label{BPMN-improvements}
+The following section shows the improvement steps done in section \ref{improvements}.
 
+\newgeometry{top=0.1cm}
+\begin{figure}
+	\centering
+	\includegraphics[width=1.7\columnwidth, angle=90]{graphics/register-customer/2-registercustomer-renaming-bpmn.pdf}
+	\caption{Adapted customer registrations process, after renaming} 
+	\label{fig:process-renaming} 
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.7\columnwidth, angle=90]{graphics/register-customer/3-registercustomer-manual-bpmn.pdf}
+	\caption{Adapted customer registrations process, after changing the manual task to a user task} 
+	\label{fig:process-manual} 
+\end{figure}
 
-\section{BPMN implemented improvements}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.7\columnwidth, angle=90]{graphics/register-customer/4-registercustomer-merge-bpmn.pdf}
+	\caption{Adapted customer registrations process, after merging tasks that are executed by the same resource} 
+	\label{fig:process-merge} 
+\end{figure}
 
-\label{BPMN-after-naming}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.7\columnwidth, angle=90]{graphics/register-customer/5-registercustomer-exclusive-bpmn.pdf}
+	\caption{Adapted customer registrations process, after changing the combined parallel and exclusive gateways to an inclusive gateway } 
+	\label{fig:process-inclusive} 
+\end{figure}
+\restoregeometry
+\section{Case Study - Value Added Analysis}\label{BPMN-vaa}
+The following section shows resources needed for the implementation of value added analysis in section \ref{improv-vaa}.
 
-\section{asd}
+\newgeometry{top=0.1cm}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.7\columnwidth, angle=90]{graphics/register-customer/6-registercustomer-vaa.pdf}
+	\caption{Adapted customer registrations process with colored in activities according after value added analysis} 
+	\label{fig:process-vaa} 
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.7\columnwidth, angle=90]{graphics/register-customer/7-registercustomer-waste-elimination.pdf}
+	\caption{Adapted customer registrations process after waste elimination} 
+	\label{fig:process-vaa-waste} 
+\end{figure}

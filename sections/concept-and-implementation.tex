@@ -68,12 +68,12 @@ As describes in section \ref{manual} manual tasks should not be part of an execu
 
 Manual tasks are identified by the software. The returned effected elements represent a list of manual tasks in the given diagram.
 
-\subsection{Complete the process model}
+\subsection{Complete the Process Model}
 Another manual step to improve a process model, is making sure the process model is complete section \ref{complete}.
 
 Since this would also require domain specific knowledge, the software does not include analyzing the process model for incompleteness.
 
-\subsection{No two consecutive Tasks handled by the same resource}\label{merge-section}
+\subsection{Merge consecutive tasks handled by the same resource}\label{merge-section}
 Two task that are executed one after the other should be merged, if they have the same entity executing the task. As described in section \ref{granulartity}, bringing the model to an adequate granularity level minimizes handovers and overhead. In case of user tasks this means the same usergroup is executing both tasks. Automated tasks that follow each other should also always be merged to minimize flownodes.
 
 
@@ -114,7 +114,7 @@ The software applies this rule whenever a parallel gateways is followed by one o
 	\label{fig:example-GW-fix} 
 \end{figure}
 
-\subsection{Value Added Analysis}
+\subsection{Perform Value Added Analysis and Waste Elimination}
 In order to eliminate tasks in a process that have limited value for the customer, a value added analysis as explained in section \ref{vaa} can be performed.  
 
 This would also require domain specific knowledge and is therefore not done by the software. 

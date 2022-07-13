@@ -3,22 +3,20 @@ In the previous chapter a set of suggestions for improving a BPMN diagram where 
 
 This chapter will provide a example how the mentioned not automatable and automatable suggestions can be applied together to an existing BPMN model. 
 
-At first, the example BPMN model used for this case study and the evaluation that is done by the software on this BPMN will be explained. After that, all suggestions as they are listed in section \ref{last} will be implemented one by one, using the software evaluation as aid. 
-
-In the end, the original BPMN will be compared with the final result using quantitative measures as described in section \ref{quant}.
+At first, the example BPMN model used for this case study and the evaluation that is done by the software on this BPMN will be explained. Finally, all suggestions as they are listed in section \ref{last} will be implemented one by one, using the software evaluation as aid. 
 
 \section{The Example Model}
-The used BPMN model for this chapter will be a fictitious client registration process which was adapted from a real live process used in the telecommunication sector in order to be used in this thesis. The graphical representation of the process model can be found in figure \ref{fig:example-process} and the full XML structure is in the appendix section \ref{app-1}
+The used BPMN model for this chapter will be a fictitious client registration process which was adapted from a real live process used in the telecommunication sector in order to be used in this thesis. The graphical representation of the process model can be found in figure \ref{fig:example-process}. The full \textit{.bpmn} file of this process can be accessed in the github repository\cite{appendix-registration-1}. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.7\columnwidth, angle=90 ]{graphics/process-bpmn.pdf}
-	\caption{Example of a process where tasks can be merged together} 
+	\includegraphics[width=1.7\columnwidth, angle=90]{graphics/register-customer/1-registercustomer-bpmn.pdf}
+	\caption{Adapted customer registrations process} 
 	\label{fig:example-process} 
 \end{figure}
 
 \section{Evaluation by the Software}
-In order to evaluate the best practices that where automated by the software as mentioned in section \ref{last}, the BPMN Model was given as input for the software. The full output can be found in section \ref{app-1} the following output for each Suggestion/Rule was given:
+In order to evaluate the best practices that where implemented the BPMN Model was given as input for the software. The following output for each suggestion/rule was given. The full output can be found in appendix section \ref{app-output}.
 \paragraph{Comply with Naming Conventions}~\\
 As described in chapter \ref{naming-con}, this algorithm scans the BPMN model for events, tasks or gateways that have more than five words in their label. The following list of elements is returned that violate this rule:
 \begin{lstlisting}[language=json,label=lst:naming]
@@ -51,8 +49,8 @@ When searching for manual tasks in the process (see section \ref{soft-manual}), 
 	"type": "Task"
 }
 \end{lstlisting}
-\paragraph{No two consecutive Tasks handled by the same resource}~\\
-Another rule that was implemented was that no two consecutive tasks should be processed by the same resource. The Software identified the following tasks that could be merged with its successor:
+\paragraph{Merge Consecutive Tasks Handled by the Same Resource}~\\
+Another rule that was implemented was that no two consecutive tasks should be processed by the same resource. The software identified the following tasks that could be merged with its successor:
 \begin{lstlisting}[language=json,label=lst:merge]
 "effectedElements": [
 {
@@ -87,7 +85,7 @@ Another rule that was implemented was that no two consecutive tasks should be pr
 }
 ]
 \end{lstlisting}
-\paragraph{Inclusive Gateways over combining parallel and exclusive Gateways}~\\
+\paragraph{Replace Combinations of Parallel and Exclusive Gateways With Inclusive Gateways}~\\
 As described in section \ref{inc-sw} it is preferred to use inclusive gateways instead of combining parallel and exclusive gateways. The only element that violates that rule in the given BPMN is returned:
 \begin{lstlisting}[language=json]
 "effectedElements": [
@@ -98,8 +96,10 @@ As described in section \ref{inc-sw} it is preferred to use inclusive gateways i
 }
 ]
 \end{lstlisting}
-\section{Comply with Naming Conventions}
-Based on the naming conventions defined in section \ref{naming} unnamed Tasks, Events and Gateways where named and Elements returned in listing \ref{lst:naming} where renamed. In figure \ref{fig:naming-org} a segment of the example BPMN is shown and figure \ref{fig:naming-new} shows the corresponding changes after renaming. 
+\section{Apply Suggestions for Improvement}\label{improvements}
+The following section will give an introduction on how the suggestions mentioned in section \ref{last} can be applied to the process in figure \ref{fig:example-process}. 
+\subsection{Comply with Naming Conventions}
+Based on the naming conventions defined in section \ref{naming}, unnamed tasks, events and gateways where named and elements returned in listing \ref{lst:naming} where renamed. In figure \ref{fig:naming-org} a segment of the example BPMN, where the naming conventions are violated, is shown and figure \ref{fig:naming-new} shows the corresponding changes after renaming. 
 
 \begin{figure}[H]
 	\centering
@@ -111,22 +111,22 @@ Based on the naming conventions defined in section \ref{naming} unnamed Tasks, E
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\columnwidth]{graphics/case-study-naming-new}
-	\caption{Segment \ref{fig:naming-org} with implementing naming conventions}
+	\caption{Segment \ref{fig:naming-org} with changed element labels in order to satisfy naming conventions}
 	\label{fig:naming-new}
 \end{figure}
 
-The full renaming change can be found in the appendix chapter \ref{BPMN-after-naming}. The full XMl representation of this process can be found in \cite{online-BPMN-after-naming}
+The full renaming change can be found in the appendix chapter \ref{BPMN-improvements} in figure \ref{fig:process-renaming}. The full XMl representation of this process can be found in the github repository\cite{appendix-registration-2}.
 
-\section{Eliminate Manual Tasks}
+\subsection{Eliminate Manual Tasks}
 The only manual task in this BPMN model is the \textit{cancel promotion} task. Cancelling promotions can only be done manually by a service agent in this fictitious case and can therefore not be automated. In this case, the manual task can be change into a \textit{user task} and the advantages of a worklist handler can be utilized as described in section \ref{manual}.
-The original segment with the manual task can be seen in figure \ref{fig:manual-org}. The corresponding change in this section of the mode is shown in figure \ref{fig:manual-new}. 
+The original segment with the manual task can be seen in figure \ref{fig:manual-org}. The corresponding change of this section is shown in figure \ref{fig:manual-new}. 
 
 
 \begin{minipage}[t]{0.5\textwidth}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{graphics/case-study-manual-org}
-		\caption{Segment of the BPMN model in figure \ref{fig:example-process} with the only manual tasks}
+		\caption{Segment of the BPMN model in figure \ref{fig:example-process} with the manual task}
 		\label{fig:manual-org}
 	\end{figure}
 \end{minipage}
@@ -139,17 +139,19 @@ The original segment with the manual task can be seen in figure \ref{fig:manual-
 \end{figure}
 \end{minipage}
 
-The full BPMN change can be found in \cite{online-BPMN-after-manual}.
+The fully changed BPMN file can be found in the appendix chapter \ref{BPMN-improvements} in figure \ref{fig:process-manual}. The full XMl representation of this process can be found in the github repository\cite{appendix-registration-3}.
+\subsection{Complete the Process Model}
+This fictional model covers all cases and error scenarios that can happen in this process.
 
-\section{Extend automation boundaries}
-Since the process model is already fully automated apart from the \textit{cancel promotion} task and this task is not automatable yet, as already mentioned in the last section, the automation boundaries cannot be extended further. 
+\subsection{Extend Automation Boundaries}
+Since the process model is, apart from the \textit{cancel promotion} task, already fully automated  and this activity is not automatable yet the automation boundaries cannot be extended further. 
 
-\section{No two consecutive Tasks handled by the same resource}
+\subsection{Merge Consecutive Tasks Handled by the Same Resource}
 According to the rules described in section \ref{merge-section}, the list of elements given in \ref{lst:merge} can be merged with their direct successor. The segements of the BPMN model with the listed elements can be found in figures \ref{fig:merge-1-org} and \ref{fig:merge-2-org} and the respective change is shown in figures \ref{fig:merge-1-new} and \ref{fig:merge-2-new}. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{graphics/case-study-merge-org-1}
-	\caption{Segment of the BPMN model in figure \ref{fig:example-process} with consecutive service tasks}
+	\caption{Segment of the BPMN model \ref{fig:example-process} with consecutive service tasks}
 	\label{fig:merge-1-org}
 \end{figure}
 
@@ -164,7 +166,7 @@ According to the rules described in section \ref{merge-section}, the list of ele
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.95\textwidth]{graphics/case-study-merge-org-2}
-	\caption{Segment of the BPMN model in figure \ref{fig:example-process} with consecutive service tasks}
+	\caption{Segment of the BPMN model \ref{fig:example-process} with consecutive service tasks}
 	\label{fig:merge-2-org}
 \end{figure}
 \end{minipage}
@@ -177,9 +179,9 @@ According to the rules described in section \ref{merge-section}, the list of ele
 \end{figure}
 \end{minipage}
 
-The full BPMN change can be seen in the appendix section \ref{online-BPMN-after-merge}. 
+The changes in the BPMN file can be found in the appendix chapter \ref{BPMN-improvements} in figure \ref{fig:process-merge}. The full XMl representation of this process can be found in the github repository\cite{appendix-registration-4}.
 
-\section{Inclusive Gateways over combining parallel and exclusive Gateways}
+\subsection{Replace Combinations of Parallel and Exclusive Gateways With Inclusive Gateways}
 The only case in this BPMN model where a combination of parallel and exclusive gateways was used instead of an inclusive gateway is in the segment shown in figure \ref{fig:exclusive-org}. The corresponding change in this section of the model is shown in figure \ref{fig:exclusive-new}. 
 
 
@@ -196,11 +198,36 @@ The only case in this BPMN model where a combination of parallel and exclusive g
 	\label{fig:exclusive-new}
 \end{figure}
 
-The full BPMN change can be found in \cite{online-BPMN-after-exclusive}.
+The changes in the BPMN file can be found in the appendix chapter \ref{BPMN-improvements} in figure \ref{fig:process-inclusive}. The full XMl representation of this process can be found in the github repository\cite{appendix-registration-5}.
+\subsection{Perform Value Added Analysis and Waste Elimination}\label{improv-vaa}
+In order to eliminate tasks in a process that have limited value for the customer, a value added analysis as explained in section \ref{vaa} will be performed on the customer registration process. For the value added analysis the last version of the process model will be used after implementing the suggestions discussed by now. 
 
-\section{Value Added Analysis}
-%TODO
+Following the same approach as in seciton \ref{vaa}, the process tasks where categorized in \textcolor{green}{RVA (real value adding)}, \textcolor{orange}{BVA (business value adding)} and \textcolor{red}{NVA (non value adding)}. The colored process is shown in the appendix section \ref{BPMN-vaa} in figure \ref{fig:process-vaa}.
 
-\section{Evaluate Suggestions Quantitative}
-%TODO
+For better understanding, the following list will provide a description of the BVA and NVA activites and why they where categorized as NVA/BVA:
+
+\paragraph{Cancel Identification  Instances \& Check Solvency (BVA)}~\\ 
+This activity cancels, in case that a customer registered for the second time, all identification processes of the same customer. Furthermore the solvency of the customer is checked. Since neither the solvency check, nor the cancellation of identification processes adds value to the customer, but are measures for fraud protection, this activity is marked as business value adding. 
+\paragraph{Cancel Promotion (NVA)}~\\ 
+ The canceling promotions activity has only effect when the registration process fails and promotions have already been booked by the customer. In the case that the promotion stays booked and the customer registration fails, the user cannot use the promotion anyway, therefore this activity was categorized as non value adding.
+\paragraph{Determine Appropriate Identification Process (BVA)}~\\ 
+ There are different ways a customer can be identified. This activity decides based on rules which method is used. Since the whole identification process adds no value to the customer, but is used for fraud protection, this activity is marked as business value adding. 
+\paragraph{Deferred Ident and Contract Confirmation (BVA)}~\\ 
+ Depending on the decision taken in the previous activity, this activity performs the identification. 
+\paragraph{Create Index for Contract Documents \& Archive Contract Documents (BVA)}~\\ 
+Contract documents are not archived for the customer, therefore this two activities are marked as business value adding.
+
+\paragraph{Waste Elimination}~\\
+Now that the value of each activity was determined, NVA ans BVA tasks can be considered for waste elimination.
+
+As mentioned above, the \textit{cancel promotion} task has neither real customer nor business value and can therefore be eliminated together with the compensation events that were meant to trigger this activity. 
+
+Another possible waste elimination could be achieved by evaluating the effect of the implemented fraud protection in the following activities and evaluate if simpler measures for fraud protection can be used to achieve similar results.
+\begin{itemize}
+	\item \textit{Cancel identification  instances \& check solvency (BVA)}, 
+	\item \textit{{Determine appropriate identification process (BVA)}} 
+	\item \textit{Deferred ident and contract confirmation (BVA)}
+\end{itemize}
+
+After eliminating the \textit{cancel promotion} activity and everything related to triggering the compensation, the final process model can be found in figure \ref{fig:process-vaa-waste}.
 

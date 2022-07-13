@@ -1,1 +1,16 @@
-\todo{write conclusion}
+This thesis aimed to summarize best practices for creating and transforming executable BPMN models. Based on the best-practices given in chapter \ref{chapter-2} and \ref{chapter-3}, the following suggestions can be implemented into a given BPMN process model:
+\begin{enumerate}
+	\item Comply with naming conventions
+	\item Eliminate manual tasks
+	\item Extend automation boundaries
+	\item Complete the process model
+	\item Merge consecutive tasks handled by the same resource
+	\item Replace combinations of parallel and exclusive gateways with inclusive gateways
+	\item Perform value added analysis and waste elimination
+\end{enumerate}
+
+The software described in chapter \ref{chapter-4} can be used to scan an \textit{.bpmn} file for violations of the mentioned best-practices. The software then returns a list of BPMN elements that violate the given rule. This software is freely available as an open source project on github:  \url{https://github.com/dsunaric/epms-service}. 
+
+This thesis goes then on to demonstrate on a case study how the software can be used as an aid to implement the listed suggestions in chapter \ref{chapter-5}. 
+
+While this thesis mentioned a few anti-patterns that are commonly used in executable BPMNS, there are probably many other left that could easily be automatically identified. Further research is needed to quantifiable determine the effectiveness of implementing the given suggestions with measures like the flow node count or execution time. 

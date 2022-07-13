@@ -28,6 +28,8 @@
 \usepackage{svg}
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
 \usepackage{pdfpages}
+\usepackage{geometry}
+\usepackage{sidecap}  %required for side captions
 % Define convenience functions to use the author name and the thesis title in the PDF document properties.
 \newcommand{\authorname}{Dragana Sunaric} % The author name without titles.
 \newcommand{\thesistitle}{How to Model and Transform Executable BPMN Process Models} % The title of the thesis. The English version should be used, if it exists.
@@ -42,6 +44,18 @@
     pdfkeywords     = {a, list, of, keywords} % The document's keywords in the document properties (optional).
 }
 
+
+\newenvironment{changemargin}[2]{%
+	\begin{list}{}{%
+			\setlength{\topsep}{0pt}%
+			\setlength{\topmargin}{#1}%
+			\setlength{\listparindent}{\parindent}%
+			\setlength{\itemindent}{\parindent}%
+			\setlength{\parsep}{\parskip}%
+		}%
+		\item[]}{
+	\end{list}
+}
 
 \definecolor{maroon}{rgb}{0.5,0,0}
 \definecolor{darkgreen}{rgb}{0,0.5,0}
@@ -235,7 +249,7 @@
 
 \appendix
 
-%\chapter{Appendix}
-%\input{sections/appendix.tex}
+\chapter{Appendix}
+\input{sections/appendix.tex}
 
 \end{document}
