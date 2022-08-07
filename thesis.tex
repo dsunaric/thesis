@@ -24,7 +24,7 @@
 \usepackage{nag}       % Issues warnings when best practices in writing LaTeX documents are violated.
 \usepackage{float} % Provides tooltip-like todo notes.
 \usepackage{todonotes} % Provides tooltip-like todo notes.
-\usepackage{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
+\usepackage[hidelinks]{hyperref}  % Enables cross linking in the electronic document version. This package has to be included second to last.
 \usepackage{svg}
 \usepackage[acronym,toc]{glossaries} % Enables the generation of glossaries and lists fo acronyms. This package has to be included last.
 \usepackage{pdfpages}
@@ -32,7 +32,7 @@
 \usepackage{sidecap}  %required for side captions
 % Define convenience functions to use the author name and the thesis title in the PDF document properties.
 \newcommand{\authorname}{Dragana Sunaric} % The author name without titles.
-\newcommand{\thesistitle}{How to Model and Transform Executable BPMN Process Models} % The title of the thesis. The English version should be used, if it exists.
+\newcommand{\thesistitle}{Transforming Conceptual BPMN Process Models into Efficient Executable Workflows} % The title of the thesis. The English version should be used, if it exists.
 
 % Set PDF document properties
 \hypersetup{
@@ -154,8 +154,8 @@
 
 % Required data.
 \setregnumber{11814569}
-\setdate{13}{07}{2022} % Set date with 3 arguments: {day}{month}{year}.
-\settitle{\thesistitle}{Vereinfachung von BPMN-Diagrammen} % Sets English and German version of the title (both can be English or German). If your title contains commas, enclose it with additional curvy brackets (i.e., {{your title}}) or define it as a macro as done with \thesistitle.
+\setdate{07}{08}{2022} % Set date with 3 arguments: {day}{month}{year}.
+\settitle{\thesistitle}{ } % Sets English and German version of the title (both can be English or German). If your title contains commas, enclose it with additional curvy brackets (i.e., {{your title}}) or define it as a macro as done with \thesistitle.
 %\setsubtitle{Optional Subtitle of the Thesis}{Optionaler Untertitel der Arbeit} % Sets English and German version of the subtitle (both can be English or German).
 
 % Select the thesis type: bachelor / master / doctor / phd-school.
